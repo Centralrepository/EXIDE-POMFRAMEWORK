@@ -1,0 +1,13 @@
+package com.prakat.Exide.Pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class CustomerOccupationDetails {
+	WebDriver driver;
+	
+	public CustomerOccupationDetails(WebDriver driver) {
+	this.driver=driver;
+	PageFactory.initElements(driver, this);
+	}
+}
