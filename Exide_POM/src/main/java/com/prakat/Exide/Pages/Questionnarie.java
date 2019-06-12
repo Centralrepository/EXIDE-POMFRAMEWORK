@@ -1,5 +1,8 @@
 package com.prakat.Exide.Pages;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 public class Questionnarie {
 	//Elements Locator For Questionnarie 51-54 For No Radio Botton
 		@FindBy(xpath="(//Label[@class='radioLabel'])[2]")

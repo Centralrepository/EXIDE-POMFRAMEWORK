@@ -1,5 +1,8 @@
 package com.prakat.Exide.Pages;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 public class ReceiptCheque {
 
 	//Elements Locator For payment type select field
