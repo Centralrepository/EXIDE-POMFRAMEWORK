@@ -167,7 +167,8 @@ public class ProposalForm extends BaseTest {
 
 	}
 
-	@Test(dataProvider = "getCustomerData")(dependsOnMthods= {"ProductDetails"})
+	//@Test(dataProvider = "getCustomerData")(dependsOnMthods= {"ProductDetails"})
+	@Test
 	public void CustomerDetails(String custRelationship, String day, String month, String year)
 			throws InterruptedException {
 		pdetail = new CustomerPersonalDetails(driver);
