@@ -14,9 +14,11 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.prakat.Exide.Pages.CustomerAddressDetails;
+import com.prakat.Exide.Pages.CustomerOccupationDetails;
 import com.prakat.Exide.Pages.CustomerPersonalDetails;
 import com.prakat.Exide.Pages.HomePage;
 import com.prakat.Exide.Pages.LoginPage;
+import com.prakat.Exide.Pages.NomineeDetails;
 import com.prakat.Exide.Pages.ProductSelection;
 import com.prakat.Generic.Helper.BaseTest;
 import com.prakat.Generic.Helper.ConstantHelper;
@@ -35,17 +37,15 @@ public class ProposalForm extends BaseTest {
 		return data;
 	}
 
-
 	@Test(dataProvider = "getProductData")
-	public void ProductDetails(String productName, String proposalNo, String advisorCode, 
-			String accountNum,String custRelationship, String day, String month, String year,
-			String customerTitle,String ageProof,String insuredFN,String insuredMN, 
-			String insuredLN, String idProof, String idProofNum, String education, 
-			String maritalStatus, String fatherFN, String fatherMN, String fatherLN, 
-			String nationality,String cAddress1, String cAddress2, String cAddress3, String cLandmark,
-			String cPincode, String addressProof,String mobileNum, String email,
-			String preferedLang, String insuredOccupation, String insuredDesignation, String OccuDesc, 
-			String insuredEmployer, String insuredIncome, String fatherIncome, String fatherWork)
+	public void ProductDetails(String productName, String proposalNo, String advisorCode, String accountNum,
+			String custRelationship, String day, String month, String year, String customerTitle, String ageProof,
+			String insuredFN, String insuredMN, String insuredLN, String idProof, String idProofNum, String education,
+			String maritalStatus, String fatherFN, String fatherMN, String fatherLN, String nationality,
+			String cAddress1, String cAddress2, String cAddress3, String cLandmark, String cPincode,
+			String addressProof, String mobileNum, String email, String preferedLang, String insuredOccupation,
+			String insuredDesignation, String OccuDesc, String insuredEmployer, String insuredIncome,
+			String fatherIncome, String fatherWork)
 			throws IOException, Throwable {
 		BaseTest.logger = BaseTest.report.createTest("Click on add new");
 		WaitHelper wait = new WaitHelper();
@@ -56,6 +56,8 @@ public class ProposalForm extends BaseTest {
 		prodSel = new ProductSelection(driver);
 		cpdetail = new CustomerPersonalDetails(driver);
 		cadetail = new CustomerAddressDetails(driver);
+		codetails = new CustomerOccupationDetails(driver);
+		nomdetails = new NomineeDetails(driver);
 		drop = new DropdownHelper();
 		// JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -93,17 +95,36 @@ public class ProposalForm extends BaseTest {
 
 		prodSel.getProposalFormNo().sendKeys(proposalNo);
 
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 
-		String actualProposalMsg = prodSel.getValidProposalMsg().getText();
-		System.out.println(actualProposalMsg);
-		Assert.assertEquals(actualProposalMsg, "Valid Proposal No");
+/*		if (prodSel.getProposalErrorMsg().isDisplayed()) {
+			System.out.println("Invalid Proposal Number");
+		} else {
+			String actualProposalMsg = prodSel.getValidProposalMsg().getText();
+			System.out.println(actualProposalMsg);
+			Assert.assertEquals(actualProposalMsg, " Valid Proposal No ");
+		}*/
+		
+		
+		if (prodSel.getValidProposalMsg().isDisplayed()) {
+			System.out.println("valid Proposal Number");
+		} else {
+			System.out.println("Invalid Proposal Number");
+		}		
+		
 		prodSel.getPlanSaveProceedBtn().click();
 		Thread.sleep(2000);
 		// String advcode=xlib.getExcelData("ProductName", 2, 0);
 		System.out.println(advisorCode);
 		prodSel.getAdvisorCode().sendKeys(advisorCode);
 		prodSel.getStatusText().click();
+		
+		if (prodSel.getValidAdvisorMsg().isDisplayed()) {
+			System.out.println(" Valid Agent No ");
+		} else {
+			System.out.println(" Invalid Agent No ");
+		}		
+		
 		Thread.sleep(5000);
 		prodSel.getAgentSaveProceed().click();
 
@@ -168,8 +189,7 @@ public class ProposalForm extends BaseTest {
 			// prodSel.getEPolicySaveProceed().click();
 		}
 		prodSel.getEPolicySaveProceed().click();
-	
-		
+
 		drop.getSelectByVisibleText(cpdetail.getProposerRelationship(), custRelationship);
 		cpdetail.getDateOfBirthDay().sendKeys(day);
 		cpdetail.getDateOfBirthMonth().sendKeys(month);
@@ -180,10 +200,10 @@ public class ProposalForm extends BaseTest {
 		cpdetail.getCustNoPANCheckbox().click();
 		Thread.sleep(2000);
 		cpdetail.getCustNoAadharCheckbox().click();
-		
-		 // WebElement scrollelement =pdetail.getCustomScrollContainer1();
-		 // js.executeScript("arguments[0].scrollIntoView(true);",scrollelement);
-		 
+
+		// WebElement scrollelement =pdetail.getCustomScrollContainer1();
+		// js.executeScript("arguments[0].scrollIntoView(true);",scrollelement);
+
 		Thread.sleep(2000);
 		EventFiringWebDriver eventFiring = new EventFiringWebDriver(driver);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
@@ -205,14 +225,14 @@ public class ProposalForm extends BaseTest {
 		cpdetail.getAddNewCustomerRadio().click();
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
-		
+
 		drop.getSelectByVisibleText(cpdetail.getcustomerTitle(), customerTitle);
 		cpdetail.getInsuredFirstName().sendKeys(insuredFN);
 		cpdetail.getInsuredMiddleName().sendKeys(insuredMN);
 		cpdetail.getInsuredLastName().sendKeys(insuredLN);
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=1000");
-		//eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=200");
+		// eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=200");
 		Thread.sleep(4000);
 		cpdetail.getInsuredNoCKYC().click();
 		drop.getSelectByVisibleText(cpdetail.getInsuredAgeProof(), ageProof);
@@ -221,7 +241,7 @@ public class ProposalForm extends BaseTest {
 		drop.getSelectByVisibleText(cpdetail.getInsuredEducation(), education);
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
-		
+
 		drop.getSelectByVisibleText(cpdetail.getInsuredMaritalStatus(), maritalStatus);
 		cpdetail.getInsuredFatherFN().sendKeys(fatherFN);
 		cpdetail.getInsuredFatherMN().sendKeys(fatherMN);
@@ -229,17 +249,15 @@ public class ProposalForm extends BaseTest {
 		drop.getSelectByVisibleText(cpdetail.getInsuredNationality(), nationality);
 		cpdetail.getCustomerSaveProceed().click();
 		Thread.sleep(2000);
-		
-		
-		
+
 		cadetail.getInsuredCommunicationAddress1().sendKeys(cAddress1);
-		cadetail.getInsuredCommunicationAddress2().sendKeys(cAddress2);	
+		cadetail.getInsuredCommunicationAddress2().sendKeys(cAddress2);
 		cadetail.getInsuredCommunicationAddress3().sendKeys(cAddress3);
 		cadetail.getCAddressPincode().sendKeys(cPincode);
 		cadetail.getCityText().click();
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer2\"]').scrollTop=200");
-		
+
 		drop.getSelectByVisibleText(cadetail.getInsuredAddressProof(), addressProof);
 		Thread.sleep(2000);
 		cadetail.getSameAddressYesBtn().click();
@@ -256,8 +274,7 @@ public class ProposalForm extends BaseTest {
 		Thread.sleep(2000);
 		cadetail.getCustAddrSaveProceed().click();
 		Thread.sleep(2000);
-		
-		
+
 		drop.getSelectByVisibleText(codetails.getInsuredOccupation(), insuredOccupation);
 		drop.getSelectByVisibleText(codetails.getInsuredDesignation(), insuredDesignation);
 		codetails.getInsuredOccupationDesc().sendKeys(OccuDesc);
@@ -267,8 +284,9 @@ public class ProposalForm extends BaseTest {
 		drop.getSelectByVisibleText(codetails.getInsuredFatherDesignation(), fatherWork);
 		Thread.sleep(1000);
 		codetails.getCustOccuSaveProceed().click();
+
 		logger.pass("Proposal Form success");
-		
+
 	}
 
 }
