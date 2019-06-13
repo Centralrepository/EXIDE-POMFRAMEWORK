@@ -30,18 +30,21 @@ public class ProposalForm extends BaseTest {
 
 	@DataProvider
 	public Object[][] getProductData() {
-		Object data[][] = ExcelDataProvider.getTestData("ProductDetails");
+		Object data[][] = ExcelDataProvider.getTestData("ProposalForm");
 		return data;
 	}
 
-	@DataProvider
-	public Object[][] getCustomerData() {
-		Object data[][] = ExcelDataProvider.getTestData("CustomerDetails");
-		return data;
-	}
 
 	@Test(dataProvider = "getProductData")
-	public void ProductDetails(String productName, String proposalNo, String advisorCode, String accountNum)
+	public void ProductDetails(String productName, String proposalNo, String advisorCode, 
+			String accountNum,String custRelationship, String day, String month, String year,
+			String customerTitle,String ageProof,String insuredFN,String insuredMN, 
+			String insuredLN, String idProof, String idProofNum, String education, 
+			String maritalStatus, String fatherFN, String fatherMN, String fatherLN, 
+			String nationality,String cAddress1, String cAddress2, String cAddress3, String cLandmark,
+			String cPincode, String addressProof,String mobileNum, String email,
+			String preferedLang, String insuredOccupation, String insuredDesignation, String OccuDesc, 
+			String insuredEmployer, String insuredIncome, String fatherIncome, String fatherWork)
 			throws IOException, Throwable {
 		BaseTest.logger = BaseTest.report.createTest("Click on add new");
 		WaitHelper wait = new WaitHelper();
@@ -163,20 +166,13 @@ public class ProposalForm extends BaseTest {
 			// prodSel.getEPolicySaveProceed().click();
 		}
 		prodSel.getEPolicySaveProceed().click();
-		logger.pass("Product Details success");
-
-	}
-
-	//@Test(dataProvider = "getCustomerData")(dependsOnMthods= {"ProductDetails"})
-	@Test
-	public void CustomerDetails(String custRelationship, String day, String month, String year)
-			throws InterruptedException {
+	
 		pdetail = new CustomerPersonalDetails(driver);
 		drop.getSelectByVisibleText(pdetail.getProposerRelationship(), custRelationship);
 		pdetail.getDateOfBirthDay().sendKeys(day);
 		pdetail.getDateOfBirthMonth().sendKeys(month);
 		pdetail.getDateOfBirthYear().sendKeys(year);
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		pdetail.getGenderMale().click();
 		Thread.sleep(2000);
 		pdetail.getCustNoPANCheckbox().click();
@@ -196,13 +192,79 @@ public class ProposalForm extends BaseTest {
 		// Assert.assertEquals(actualEiaNum, accountNum);
 		Thread.sleep(2000);
 		pdetail.getCustSearch().click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
 		Thread.sleep(2000);
 		pdetail.getCustHasNoPrevPolicyNum().click();
 		Thread.sleep(2000);
 		pdetail.getPrevPolicySearch().click();
-		logger.pass("Customer Details success");
+		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
+		Thread.sleep(2000);
+		pdetail.getAddNewCustomerRadio().click();
+		Thread.sleep(2000);
+		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
+		
+		drop.getSelectByVisibleText(pdetail.getcustomerTitle(), customerTitle);
+		pdetail.getInsuredFirstName().sendKeys(insuredFN);
+		pdetail.getInsuredMiddleName().sendKeys(insuredMN);
+		pdetail.getInsuredLastName().sendKeys(insuredLN);
+		Thread.sleep(2000);
+		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=1000");
+		//eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=200");
+		Thread.sleep(4000);
+		pdetail.getInsuredNoCKYC().click();
+		drop.getSelectByVisibleText(pdetail.getInsuredAgeProof(), ageProof);
+		drop.getSelectByVisibleText(pdetail.getInsuredIDProof(), idProof);
+		pdetail.getIdentityProofNo().sendKeys(idProofNum);
+		drop.getSelectByVisibleText(pdetail.getInsuredEducation(), education);
+		Thread.sleep(2000);
+		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
+		
+		drop.getSelectByVisibleText(pdetail.getInsuredMaritalStatus(), maritalStatus);
+		pdetail.getInsuredFatherFN().sendKeys(fatherFN);
+		pdetail.getInsuredFatherMN().sendKeys(fatherMN);
+		pdetail.getInsuredFatherLN().sendKeys(fatherLN);
+		drop.getSelectByVisibleText(pdetail.getInsuredNationality(), nationality);
+		pdetail.getCustomerSaveProceed().click();
+		Thread.sleep(2000);
+		
+		
+		
+		pdetail.getInsuredCommunicationAddress1().sendKeys(cAddress1);
+		pdetail.getInsuredCommunicationAddress2().sendKeys(cAddress2);	
+		pdetail.getInsuredCommunicationAddress3().sendKeys(cAddress3);
+		pdetail.getCAddressPincode().sendKeys(cPincode);
+		pdetail.getCityText().click();
+		Thread.sleep(2000);
+		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer2\"]').scrollTop=200");
+		
+		drop.getSelectByVisibleText(pdetail.getInsuredAddressProof(), addressProof);
+		Thread.sleep(2000);
+		pdetail.getSameAddressYesBtn().click();
+		Thread.sleep(2000);
+		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer2\"]').scrollTop=1000");
+		Thread.sleep(2000);
+		pdetail.getInsuredMobileNum().sendKeys(mobileNum);
+		pdetail.getInsuredEmail().sendKeys(email);
+		Thread.sleep(1000);
+		pdetail.getCommModeEmail().click();
+		Thread.sleep(1000);
+		pdetail.getCommModeSms().click();
+		drop.getSelectByVisibleText(pdetail.getPreferedLanguage(), preferedLang);
+		Thread.sleep(2000);
+		pdetail.getCustAddrSaveProceed().click();
+		Thread.sleep(2000);
+		drop.getSelectByVisibleText(pdetail.getInsuredOccupation(), insuredOccupation);
+		drop.getSelectByVisibleText(pdetail.getInsuredDesignation(), insuredDesignation);
+		pdetail.getInsuredOccupationDesc().sendKeys(OccuDesc);
+		drop.getSelectByVisibleText(pdetail.getInsuredEmployerName(), insuredEmployer);
+		pdetail.getInsuredAnnualIncome().sendKeys(insuredIncome);
+		pdetail.getInsuredFatherAnnualIncome().sendKeys(fatherIncome);
+		drop.getSelectByVisibleText(pdetail.getInsuredFatherDesignation(), fatherWork);
+		Thread.sleep(1000);
+		pdetail.getCustOccuSaveProceed().click();
+		logger.pass("Proposal Form success");
+		
 	}
 
 }
