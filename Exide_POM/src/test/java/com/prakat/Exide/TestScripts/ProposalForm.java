@@ -13,6 +13,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.prakat.Exide.Pages.CustomerAddressDetails;
 import com.prakat.Exide.Pages.CustomerPersonalDetails;
 import com.prakat.Exide.Pages.HomePage;
 import com.prakat.Exide.Pages.LoginPage;
@@ -53,7 +54,8 @@ public class ProposalForm extends BaseTest {
 		wait.implicitWait(30);
 		xlib = new ExcelHelper();
 		prodSel = new ProductSelection(driver);
-
+		cpdetail = new CustomerPersonalDetails(driver);
+		cadetail = new CustomerAddressDetails(driver);
 		drop = new DropdownHelper();
 		// JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -167,17 +169,17 @@ public class ProposalForm extends BaseTest {
 		}
 		prodSel.getEPolicySaveProceed().click();
 	
-		pdetail = new CustomerPersonalDetails(driver);
-		drop.getSelectByVisibleText(pdetail.getProposerRelationship(), custRelationship);
-		pdetail.getDateOfBirthDay().sendKeys(day);
-		pdetail.getDateOfBirthMonth().sendKeys(month);
-		pdetail.getDateOfBirthYear().sendKeys(year);
+		
+		drop.getSelectByVisibleText(cpdetail.getProposerRelationship(), custRelationship);
+		cpdetail.getDateOfBirthDay().sendKeys(day);
+		cpdetail.getDateOfBirthMonth().sendKeys(month);
+		cpdetail.getDateOfBirthYear().sendKeys(year);
 		Thread.sleep(5000);
-		pdetail.getGenderMale().click();
+		cpdetail.getGenderMale().click();
 		Thread.sleep(2000);
-		pdetail.getCustNoPANCheckbox().click();
+		cpdetail.getCustNoPANCheckbox().click();
 		Thread.sleep(2000);
-		pdetail.getCustNoAadharCheckbox().click();
+		cpdetail.getCustNoAadharCheckbox().click();
 		
 		 // WebElement scrollelement =pdetail.getCustomScrollContainer1();
 		 // js.executeScript("arguments[0].scrollIntoView(true);",scrollelement);
@@ -186,83 +188,85 @@ public class ProposalForm extends BaseTest {
 		EventFiringWebDriver eventFiring = new EventFiringWebDriver(driver);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
 
-		String actualEiaNum = pdetail.getCustInitSearchEiaNum().getText();
+		String actualEiaNum = cpdetail.getCustInitSearchEiaNum().getText();
 		System.out.println(actualEiaNum);
 		// System.out.println(accountNum);
 		// Assert.assertEquals(actualEiaNum, accountNum);
 		Thread.sleep(2000);
-		pdetail.getCustSearch().click();
+		cpdetail.getCustSearch().click();
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
 		Thread.sleep(2000);
-		pdetail.getCustHasNoPrevPolicyNum().click();
+		cpdetail.getCustHasNoPrevPolicyNum().click();
 		Thread.sleep(2000);
-		pdetail.getPrevPolicySearch().click();
+		cpdetail.getPrevPolicySearch().click();
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
 		Thread.sleep(2000);
-		pdetail.getAddNewCustomerRadio().click();
+		cpdetail.getAddNewCustomerRadio().click();
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
 		
-		drop.getSelectByVisibleText(pdetail.getcustomerTitle(), customerTitle);
-		pdetail.getInsuredFirstName().sendKeys(insuredFN);
-		pdetail.getInsuredMiddleName().sendKeys(insuredMN);
-		pdetail.getInsuredLastName().sendKeys(insuredLN);
+		drop.getSelectByVisibleText(cpdetail.getcustomerTitle(), customerTitle);
+		cpdetail.getInsuredFirstName().sendKeys(insuredFN);
+		cpdetail.getInsuredMiddleName().sendKeys(insuredMN);
+		cpdetail.getInsuredLastName().sendKeys(insuredLN);
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=1000");
 		//eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=200");
 		Thread.sleep(4000);
-		pdetail.getInsuredNoCKYC().click();
-		drop.getSelectByVisibleText(pdetail.getInsuredAgeProof(), ageProof);
-		drop.getSelectByVisibleText(pdetail.getInsuredIDProof(), idProof);
-		pdetail.getIdentityProofNo().sendKeys(idProofNum);
-		drop.getSelectByVisibleText(pdetail.getInsuredEducation(), education);
+		cpdetail.getInsuredNoCKYC().click();
+		drop.getSelectByVisibleText(cpdetail.getInsuredAgeProof(), ageProof);
+		drop.getSelectByVisibleText(cpdetail.getInsuredIDProof(), idProof);
+		cpdetail.getIdentityProofNo().sendKeys(idProofNum);
+		drop.getSelectByVisibleText(cpdetail.getInsuredEducation(), education);
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
 		
-		drop.getSelectByVisibleText(pdetail.getInsuredMaritalStatus(), maritalStatus);
-		pdetail.getInsuredFatherFN().sendKeys(fatherFN);
-		pdetail.getInsuredFatherMN().sendKeys(fatherMN);
-		pdetail.getInsuredFatherLN().sendKeys(fatherLN);
-		drop.getSelectByVisibleText(pdetail.getInsuredNationality(), nationality);
-		pdetail.getCustomerSaveProceed().click();
+		drop.getSelectByVisibleText(cpdetail.getInsuredMaritalStatus(), maritalStatus);
+		cpdetail.getInsuredFatherFN().sendKeys(fatherFN);
+		cpdetail.getInsuredFatherMN().sendKeys(fatherMN);
+		cpdetail.getInsuredFatherLN().sendKeys(fatherLN);
+		drop.getSelectByVisibleText(cpdetail.getInsuredNationality(), nationality);
+		cpdetail.getCustomerSaveProceed().click();
 		Thread.sleep(2000);
 		
 		
 		
-		pdetail.getInsuredCommunicationAddress1().sendKeys(cAddress1);
-		pdetail.getInsuredCommunicationAddress2().sendKeys(cAddress2);	
-		pdetail.getInsuredCommunicationAddress3().sendKeys(cAddress3);
-		pdetail.getCAddressPincode().sendKeys(cPincode);
-		pdetail.getCityText().click();
+		cadetail.getInsuredCommunicationAddress1().sendKeys(cAddress1);
+		cadetail.getInsuredCommunicationAddress2().sendKeys(cAddress2);	
+		cadetail.getInsuredCommunicationAddress3().sendKeys(cAddress3);
+		cadetail.getCAddressPincode().sendKeys(cPincode);
+		cadetail.getCityText().click();
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer2\"]').scrollTop=200");
 		
-		drop.getSelectByVisibleText(pdetail.getInsuredAddressProof(), addressProof);
+		drop.getSelectByVisibleText(cadetail.getInsuredAddressProof(), addressProof);
 		Thread.sleep(2000);
-		pdetail.getSameAddressYesBtn().click();
+		cadetail.getSameAddressYesBtn().click();
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer2\"]').scrollTop=1000");
 		Thread.sleep(2000);
-		pdetail.getInsuredMobileNum().sendKeys(mobileNum);
-		pdetail.getInsuredEmail().sendKeys(email);
+		cadetail.getInsuredMobileNum().sendKeys(mobileNum);
+		cadetail.getInsuredEmail().sendKeys(email);
 		Thread.sleep(1000);
-		pdetail.getCommModeEmail().click();
+		cadetail.getCommModeEmail().click();
 		Thread.sleep(1000);
-		pdetail.getCommModeSms().click();
-		drop.getSelectByVisibleText(pdetail.getPreferedLanguage(), preferedLang);
+		cadetail.getCommModeSms().click();
+		drop.getSelectByVisibleText(cadetail.getPreferedLanguage(), preferedLang);
 		Thread.sleep(2000);
-		pdetail.getCustAddrSaveProceed().click();
+		cadetail.getCustAddrSaveProceed().click();
 		Thread.sleep(2000);
-		drop.getSelectByVisibleText(pdetail.getInsuredOccupation(), insuredOccupation);
-		drop.getSelectByVisibleText(pdetail.getInsuredDesignation(), insuredDesignation);
-		pdetail.getInsuredOccupationDesc().sendKeys(OccuDesc);
-		drop.getSelectByVisibleText(pdetail.getInsuredEmployerName(), insuredEmployer);
-		pdetail.getInsuredAnnualIncome().sendKeys(insuredIncome);
-		pdetail.getInsuredFatherAnnualIncome().sendKeys(fatherIncome);
-		drop.getSelectByVisibleText(pdetail.getInsuredFatherDesignation(), fatherWork);
+		
+		
+		drop.getSelectByVisibleText(codetails.getInsuredOccupation(), insuredOccupation);
+		drop.getSelectByVisibleText(codetails.getInsuredDesignation(), insuredDesignation);
+		codetails.getInsuredOccupationDesc().sendKeys(OccuDesc);
+		drop.getSelectByVisibleText(codetails.getInsuredEmployerName(), insuredEmployer);
+		codetails.getInsuredAnnualIncome().sendKeys(insuredIncome);
+		codetails.getInsuredFatherAnnualIncome().sendKeys(fatherIncome);
+		drop.getSelectByVisibleText(codetails.getInsuredFatherDesignation(), fatherWork);
 		Thread.sleep(1000);
-		pdetail.getCustOccuSaveProceed().click();
+		codetails.getCustOccuSaveProceed().click();
 		logger.pass("Proposal Form success");
 		
 	}
