@@ -307,7 +307,7 @@ public class PlanDetails {
 
 	@FindBy(xpath="//textarea[@placeholder='Enter Comment']")
 	private WebElement   Commentstextfield;
-	public WebElement get Commentstextfield()
+	public WebElement getCommentstextfield()
 	{
 	return Commentstextfield;
 	}
