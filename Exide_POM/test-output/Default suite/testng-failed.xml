@@ -9,7 +9,6 @@
           <include name="ProductDetails" invocation-numbers="0"/>
           <include name="beforeTest"/>
           <include name="endReport"/>
-          <include name="CustomerDetails"/>
         </methods>
       </class> <!-- com.prakat.Exide.TestScripts.ProposalForm -->
     </classes>
