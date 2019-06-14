@@ -1,12 +1,16 @@
 package com.prakat.Exide.TestScripts;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -45,7 +49,8 @@ public class ProposalForm extends BaseTest {
 			String cAddress1, String cAddress2, String cAddress3, String cLandmark, String cPincode,
 			String addressProof, String mobileNum, String email, String preferedLang, String insuredOccupation,
 			String insuredDesignation, String OccuDesc, String insuredEmployer, String insuredIncome,
-			String fatherIncome, String fatherWork)
+			String fatherIncome, String fatherWork, String nmDOBday, String nmDOBmonth, String nmDOByear, String nomRelation,
+			String nmMaritalStatus)
 			throws IOException, Throwable {
 		BaseTest.logger = BaseTest.report.createTest("Click on add new");
 		WaitHelper wait = new WaitHelper();
@@ -286,8 +291,29 @@ public class ProposalForm extends BaseTest {
 		codetails.getCustOccuSaveProceed().click();
 
 		logger.pass("Proposal Form success");
+		
+		Thread.sleep(5000);
+	
+		nomdetails.getdaybox().sendKeys(nmDOBday);
+		nomdetails.getmonthtextbox().sendKeys(nmDOBmonth);
+		nomdetails.getyeartextbox().sendKeys(nmDOByear);
+		Thread.sleep(5000);
+		nomdetails.getMaleRadiobtn1().click();
+		nomdetails.getpanchkbox().click();
+		nomdetails.getaadharchkbox().click();
+		nomdetails.geteinsurancechkbox().click();
+		nomdetails.getsearchbutton().click();
+		nomdetails.getcsrDoesntHavePreviousPno().click();
+		nomdetails.getpolicysearchbutton().click();
+		nomdetails.getaddNewCustomerbutton().click();
+		drop.getSelectByVisibleText(nomdetails.getcomborelation(), nomRelation);
+		drop.getSelectByVisibleText(nomdetails.getTitleComboRelation(), customerTitle);
+		nomdetails.getFirstNametxt().sendKeys(fatherFN);
+		drop.getSelectByVisibleText(nomdetails.getmaritialstatdrop(), nmMaritalStatus);
+		drop.getSelectByVisibleText(nomdetails.getnationalitydropdown(), nationality);
+		nomdetails.savendproceedbtn().click();
 
-	}
+		}
 
 }
 

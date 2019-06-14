@@ -16,7 +16,7 @@ public class NomineeDetails {
 	}
 
 	// Elements locators for personal details of Nominee1
-	@FindBy(name = "title")
+	@FindBy(xpath = "//div[contains(text(),'Personal Details of Nominee 1')]")
 	private WebElement Nominee1text;
 
 	public WebElement getNominee1text() {
@@ -74,7 +74,7 @@ public class NomineeDetails {
 	}
 
 	// Elements Locators for Gender(Male)
-	@FindBy(xpath = "(//label[@for='custInitSearchGenderMale'])[1]")
+	@FindBy(xpath = "//div[@class='customContainer pb-0']//label[@class='mr-2'][contains(text(),'Male')]")
 	private WebElement MaleRadiobtn1;
 
 	public WebElement getMaleRadiobtn1() {
@@ -120,6 +120,39 @@ public class NomineeDetails {
 	public WebElement getclearbutton() {
 		return clearbutton;
 	}
+	// Elements locator for search button
+	@FindBy(xpath = "//section[@id='section1']//div[5]//div[1]//button[1]")
+	private WebElement searchbutton;
+
+	public WebElement getsearchbutton() {
+		return searchbutton;
+	}
+	
+	//Web Elements for Search Using Previous Policy number
+	// Elements locator for Customer does not have Previous Policy Number button
+	@FindBy(xpath = "//label[contains(text(),'Customer does not have Previous Policy Number')]")
+	private WebElement csrDoesntHavePreviousPno;
+
+	public WebElement getcsrDoesntHavePreviousPno() {
+		return csrDoesntHavePreviousPno;
+	}
+	
+	//WebElements for Search Using Previous Policy number Search button
+	@FindBy(xpath = "//div[@class='card-block']//div[2]//div[1]//button[1]")
+	private WebElement policysearchbutton;
+
+	public WebElement getpolicysearchbutton() {
+		return policysearchbutton;
+	}
+		
+	///// Client Search Results////
+	// WebElement for add new customer
+	@FindBy(xpath = "//table[@class='table']//tbody//tr//td//label")
+	private WebElement addNewCustomerbutton;
+
+	public WebElement getaddNewCustomerbutton() {
+		return addNewCustomerbutton;
+	}	
 
 	//////////////// Nominees relation with insured/////////////////////////
 
@@ -212,7 +245,7 @@ public class NomineeDetails {
 	}
 
 	// elements locators for nationality drop down
-	@FindBy(xpath = "select[@id='nationalityValue'][1]")
+	@FindBy(xpath = "//select[@id='nationalityValue']")
 	private WebElement nationalitydropdown;
 
 	public WebElement getnationalitydropdown() {
@@ -255,7 +288,7 @@ public class NomineeDetails {
 	}
 
 	// elements locators for save and proceed button
-	@FindBy(xpath = "//lable[@class='btn btn-primary'][2]")
+	@FindBy(xpath = "//section[@id='section1']//button[@class='btn btn-primary'][contains(text(),'Save and Proceed')]")
 	private WebElement savendproceedbtn;
 
 	public WebElement savendproceedbtn() {
