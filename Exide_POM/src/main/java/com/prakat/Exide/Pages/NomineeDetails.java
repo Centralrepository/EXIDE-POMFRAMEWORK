@@ -301,7 +301,7 @@ public class NomineeDetails {
 	// Address and contact details of nominee1
 	// elements locators for YEs radio button
 
-	@FindBy(xpath = "//lable[@for='permanentAddrYes0'][1]")
+	@FindBy(xpath = "//label[contains(text(),'Yes')]")
 	private WebElement Yesrdobtn;
 
 	public WebElement getYesrdobtn() {
@@ -396,11 +396,20 @@ public class NomineeDetails {
 	//
 	// elements locators for nominee share textboox
 
-	@FindBy(name = "nomShare")
+	@FindBy(xpath = "//input[@id='BNYPC']")
 	private WebElement Nomineesharetxt;
 
 	public WebElement getNomineesharetxt() {
 		return Nomineesharetxt;
+	}
+	
+	//element to click on blank space
+	
+	@FindBy(xpath = "//body//div[9]")
+	private WebElement BlankSpace;
+
+	public WebElement getblankSpace() {
+		return BlankSpace;
 	}
 
 	// Elements locators for Save and draft for nominee relationship
@@ -412,7 +421,7 @@ public class NomineeDetails {
 	}
 
 	// Elements locators for Save and proceedfor nominee relationship
-	@FindBy(xpath = "//button[@class='btn-btn-primary'][3]")
+	@FindBy(xpath = "//section[@id='section2']//button[@class='btn btn-primary'][contains(text(),'Save and Proceed')]")
 	private WebElement saveandpro;
 
 	public WebElement getsaveandpro() {

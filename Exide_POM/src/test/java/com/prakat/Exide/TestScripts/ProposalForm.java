@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -50,7 +50,7 @@ public class ProposalForm extends BaseTest {
 			String addressProof, String mobileNum, String email, String preferedLang, String insuredOccupation,
 			String insuredDesignation, String OccuDesc, String insuredEmployer, String insuredIncome,
 			String fatherIncome, String fatherWork, String nmDOBday, String nmDOBmonth, String nmDOByear, String nomRelation,
-			String nmMaritalStatus)
+			String nmMaritalStatus, String nomShare, String sumAssured)
 			throws IOException, Throwable {
 		BaseTest.logger = BaseTest.report.createTest("Click on add new");
 		WaitHelper wait = new WaitHelper();
@@ -312,6 +312,20 @@ public class ProposalForm extends BaseTest {
 		drop.getSelectByVisibleText(nomdetails.getmaritialstatdrop(), nmMaritalStatus);
 		drop.getSelectByVisibleText(nomdetails.getnationalitydropdown(), nationality);
 		nomdetails.savendproceedbtn().click();
+		Thread.sleep(3000);
+		
+		logger.pass("Nominee personal details added successfully");
+		
+		nomdetails.getYesrdobtn().click();
+		nomdetails.getNomineesharetxt().sendKeys(nomShare);
+		nomdetails.getblankSpace().click();
+		nomdetails.getsaveandpro().click();
+		
+		logger.pass("Nominee address & conatct details added successfully");
+		Thread.sleep(5000);
+		
+		plandetails.getSumAssuredtbox().click();
+		plandetails.getSumAssuredtbox().sendKeys(sumAssured);
 
 		}
 

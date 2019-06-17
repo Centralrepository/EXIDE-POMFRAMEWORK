@@ -23,6 +23,7 @@ import com.prakat.Exide.Pages.HomePage;
 import com.prakat.Exide.Pages.LoggedInHomePage;
 import com.prakat.Exide.Pages.LoginPage;
 import com.prakat.Exide.Pages.NomineeDetails;
+import com.prakat.Exide.Pages.PlanDetails;
 import com.prakat.Exide.Pages.ProductSelection;
 
 public class BaseTest {
@@ -40,6 +41,7 @@ public class BaseTest {
 	public CustomerAddressDetails  cadetail;
 	public CustomerOccupationDetails codetails;
 	public NomineeDetails nomdetails;
+	public PlanDetails plandetails;
 	
 	public static ExtentReports report;
 	public static ExtentTest logger;	

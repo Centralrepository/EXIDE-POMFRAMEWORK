@@ -1,5 +1,10 @@
 package com.prakat.Exide.Pages;
 
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
 public class PlanDetails {
 
 	@FindBy(xpath="//select[name='payment frequency']")
@@ -64,10 +69,11 @@ public class PlanDetails {
 	}
 
 	//Element locator product details for Sum Assured tbox
-	@FindBy(xpath="//input[@name='Sum Assured']")
+	@FindBy(xpath="//tr[1]//td[4]//input[1]")
 	private WebElement SumAssuredtbox;
 	public WebElement getSumAssuredtbox()
 	{
+		SumAssuredtbox.click();
 	return SumAssuredtbox;
 	}
 
@@ -81,7 +87,7 @@ public class PlanDetails {
 	}
 
 
-	RENEWAL PAYMENT
+//	RENEWAL PAYMENT
 
 	//Element locator customer type for individual billing radio button
 
@@ -232,7 +238,7 @@ public class PlanDetails {
 	return premiumProposerNoradiobtn;
 	}
 
-	PAYOUT DETAILS
+//	PAYOUT DETAILS
 
 
 	//Element locator payout details for payout details not required check box
@@ -289,8 +295,9 @@ public class PlanDetails {
 	public WebElement getIFSCcodenotavailableCbox1()
 	{
 	return IFSCcodenotavailableCbox1;
+	}
 
-	PREMIUM PAYER
+//	PREMIUM PAYER
 
 	//Element locator premium payer for NO radio button
 
@@ -301,7 +308,7 @@ public class PlanDetails {
 	return NoRadiobutton;
 	}
 
-	E-COMMENTS
+//	E-COMMENTS
 
 	//Element locator E-COMMENTS for Comments textfield
 
