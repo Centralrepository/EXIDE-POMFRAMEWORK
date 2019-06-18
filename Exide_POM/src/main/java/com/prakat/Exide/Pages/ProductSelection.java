@@ -49,6 +49,15 @@ public class ProductSelection {
 		return ValidProposalMsg;
 	}	
 	
+	
+	
+	@FindBy(xpath="//p[contains(text(),' Required field. Field should be of 8 charact')]")
+	private WebElement ProposalErrorMsg;
+	public WebElement getProposalErrorMsg() {
+		return ProposalErrorMsg;
+	}		
+	
+	
 	@FindBy(xpath="(//button[text()=' Save and Proceed '])[1]")
 	private WebElement PlanSaveProceedBtn;
 	
