@@ -41,7 +41,7 @@ public class BaseTest {
 	public CustomerAddressDetails  cadetail;
 	public CustomerOccupationDetails codetails;
 	public NomineeDetails nomdetails;
-	public PlanDetails plandetails;
+	public PlanDetails plndetails;
 	
 	public static ExtentReports report;
 	public static ExtentTest logger;	
