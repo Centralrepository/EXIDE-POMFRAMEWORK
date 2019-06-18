@@ -1,6 +1,6 @@
 package com.prakat.Exide.TestScripts;
 
-import static org.testng.Assert.assertEquals;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +23,7 @@ import com.prakat.Exide.Pages.CustomerPersonalDetails;
 import com.prakat.Exide.Pages.HomePage;
 import com.prakat.Exide.Pages.LoginPage;
 import com.prakat.Exide.Pages.NomineeDetails;
+import com.prakat.Exide.Pages.PlanDetails;
 import com.prakat.Exide.Pages.ProductSelection;
 import com.prakat.Generic.Helper.BaseTest;
 import com.prakat.Generic.Helper.ConstantHelper;
@@ -50,7 +51,7 @@ public class ProposalForm extends BaseTest {
 			String addressProof, String mobileNum, String email, String preferedLang, String insuredOccupation,
 			String insuredDesignation, String OccuDesc, String insuredEmployer, String insuredIncome,
 			String fatherIncome, String fatherWork, String nmDOBday, String nmDOBmonth, String nmDOByear, String nomRelation,
-			String nmMaritalStatus, String nomShare, String sumAssured)
+			String nmMaritalStatus, String nomShare, String sumAssured, String policyTerm, String FreqPayment, String PSDay, String PSMonth, String PSYear, String MedClass)
 			throws IOException, Throwable {
 		BaseTest.logger = BaseTest.report.createTest("Click on add new");
 		WaitHelper wait = new WaitHelper();
@@ -63,6 +64,7 @@ public class ProposalForm extends BaseTest {
 		cadetail = new CustomerAddressDetails(driver);
 		codetails = new CustomerOccupationDetails(driver);
 		nomdetails = new NomineeDetails(driver);
+		plndetails = new PlanDetails(driver);
 		drop = new DropdownHelper();
 		// JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -91,7 +93,7 @@ public class ProposalForm extends BaseTest {
 
 		prodSel.getSelectProductSearch().sendKeys(productName);
 		// wait.waitForElementPresent(SelectProductSearch, 20);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		prodSel.getSelectProductSearch().sendKeys(Keys.ARROW_DOWN);
 		prodSel.getSelectProductSearch().sendKeys(Keys.ENTER);
 
@@ -281,6 +283,7 @@ public class ProposalForm extends BaseTest {
 		Thread.sleep(2000);
 
 		drop.getSelectByVisibleText(codetails.getInsuredOccupation(), insuredOccupation);
+		Thread.sleep(2000);
 		drop.getSelectByVisibleText(codetails.getInsuredDesignation(), insuredDesignation);
 		codetails.getInsuredOccupationDesc().sendKeys(OccuDesc);
 		drop.getSelectByVisibleText(codetails.getInsuredEmployerName(), insuredEmployer);
@@ -320,13 +323,34 @@ public class ProposalForm extends BaseTest {
 		nomdetails.getNomineesharetxt().sendKeys(nomShare);
 		nomdetails.getblankSpace().click();
 		nomdetails.getsaveandpro().click();
+		Thread.sleep(10000);
 		
-		logger.pass("Nominee address & conatct details added successfully");
+//		logger.pass("Nominee address & conatct details added successfully");
+		
+		//plndetails.getindividualBillingRadiobtn().click();
+		//System.out.println(plndetails.getTitleBar().getText());
+	
+		plndetails.getSumAssuredtbox().sendKeys(sumAssured);
 		Thread.sleep(5000);
+		//plndetails.getPolicyTermtbox().click();
+		Thread.sleep(2000);
+		plndetails.getPolicyTermtbox().sendKeys(policyTerm);
 		
-		plandetails.getSumAssuredtbox().click();
-		plandetails.getSumAssuredtbox().sendKeys(sumAssured);
-
+		
+		drop.getSelectByVisibleText(plndetails.getFrequencyPaymentDropdown(), FreqPayment);
+		//drop.getSelectByVisibleTex
+		Thread.sleep(2000);
+		//eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
+        //Thread.sleep(2000);
+		plndetails.getdaytfield().sendKeys(PSDay);
+        plndetails.getmonthtfield().sendKeys(PSMonth);
+        plndetails.getyeartfield().sendKeys(PSYear);
+        Thread.sleep(2000);
+        
+        drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
+        plndetails.getsaveandproceedbtn().click();
+        plndetails.getindividualBillingRadiobtn().click();
+        plndetails.getDebitCardradiobtn().click();
 		}
 
 }

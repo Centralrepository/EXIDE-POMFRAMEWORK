@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class PlanDetails {
 
+
 	//PLAN DETAILS
 	
 	//PRODUCT DETAILS
@@ -33,11 +34,21 @@ public class PlanDetails {
 	
 	//Element locator product details for payment frequency dropdown
 
+
 	@FindBy(xpath="//select[name='payment frequency']")
 	private WebElement PaymentFrequencyDropdown;
 	public WebElement getPaymentFrequencyDropdown()
 	{
 	return PaymentFrequencyDropdown;
+	}
+	
+	//frequecy paymet dropdown
+
+	@FindBy(xpath="//select[@name='paymentFrequency']")
+	private WebElement FrequencyPaymentDropdown;
+	public WebElement getFrequencyPaymentDropdown()
+	{
+	return FrequencyPaymentDropdown;
 	}
 
 	//Element locator product details for proposal sign date day text field
@@ -69,7 +80,7 @@ public class PlanDetails {
 
 	//Element locator product details for non medical/medical class dropdown
 
-	@FindBy(xpath="//select[name='medical class']")
+	@FindBy(xpath="//select[@name='medicalClass']")
 	private WebElement medicalclassDropdown;
 	public WebElement medicalclassDropdown()
 	{
@@ -78,7 +89,7 @@ public class PlanDetails {
 
 	//Element locator product details for save and proceed button
 
-	@FindBy(xpath="//button[@class='btn btn-primary']")
+	@FindBy(xpath="(//button[contains(text(),' Save and Proceed ')])[1]")
 	private WebElement saveandproceedbtn;
 	public WebElement getsaveandproceedbtn()
 	{
@@ -93,6 +104,14 @@ public class PlanDetails {
 	{
 	return saveanddraftbtn;
 	}
+	
+	// element for title Bar
+	@FindBy(xpath="//span[contains(text(),'BASE')]")
+	private WebElement titleBar;
+	public WebElement getTitleBar()
+	{
+	return titleBar;
+	}
 
 
 	//RENEWAL PAYMENT
@@ -101,13 +120,12 @@ public class PlanDetails {
 	private WebElement SumAssuredtbox;
 	public WebElement getSumAssuredtbox()
 	{
-		SumAssuredtbox.click();
 	return SumAssuredtbox;
 	}
 
 
 	//Element locator product details for Policy Term tbox
-	@FindBy(xpath="//input[@class='ng-pristine ng-valid ng-touched'][2]")
+	@FindBy(xpath="//tr[1]//td[6]//input[1]")
 	private WebElement PolicyTermtbox;
 	public WebElement getPolicyTermtbox()
 	{
@@ -121,6 +139,7 @@ public class PlanDetails {
 	//Element locator customer type for individual billing radio button
 
 	@FindBy(xpath="//label[@for='indBilling']")
+	//@FindBy(xpath="//span[contains(text(),'B. RENEWAL PAYMENT')]")
 	private WebElement individualbillingRadiobtn;
 	public WebElement getindividualBillingRadiobtn()
 	{
@@ -361,7 +380,10 @@ public class PlanDetails {
 	this.driver=driver;
 	PageFactory.initElements(driver, this);
 	}
+
 }
+
+
 
 
 
