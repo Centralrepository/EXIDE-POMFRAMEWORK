@@ -1,18 +1,14 @@
 package com.prakat.Exide.Pages;
 
-public class Nominee 
-{
-	package com.prakat.Exide.Pages;
-
 	import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.support.FindBy;
 	import org.openqa.selenium.support.PageFactory;
-
-	public class NomineeDetails 
+	
+	public class Nominee 
 	{
-		
-		//Elements locators for personal details
+
+	//Elements locators for personal details
 		@FindBy(xpath="//a[@class='nav-link active']")
 		private WebElement personaldetailstxt;
 		public WebElement getpersonaldetailstxt()
@@ -469,4 +465,3 @@ public class Nominee
 	}
 
 
-}

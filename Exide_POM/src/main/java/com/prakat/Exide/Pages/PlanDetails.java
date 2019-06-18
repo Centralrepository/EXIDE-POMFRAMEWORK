@@ -1,6 +1,34 @@
 package com.prakat.Exide.Pages;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 public class PlanDetails {
+
+	//PLAN DETAILS
+	
+	//PRODUCT DETAILS
+	
+	//Element locator product details for Sum Assured tbox
+		@FindBy(xpath="//input[@name='Sum Assured']")
+		private WebElement SumAssuredtbox;
+		public WebElement getSumAssuredtbox()
+		{
+		return SumAssuredtbox;
+		}
+
+
+		//Element locator product details for Policy Term tbox
+		@FindBy(xpath="//input[@class='ng-pristine ng-valid ng-touched'][2]")
+		private WebElement PolicyTermtbox;
+		public WebElement getPolicyTermtbox()
+		{
+		return PolicyTermtbox;
+		}
+	
+	//Element locator product details for payment frequency dropdown
 
 	@FindBy(xpath="//select[name='payment frequency']")
 	private WebElement PaymentFrequencyDropdown;
@@ -63,25 +91,8 @@ public class PlanDetails {
 	return saveanddraftbtn;
 	}
 
-	//Element locator product details for Sum Assured tbox
-	@FindBy(xpath="//input[@name='Sum Assured']")
-	private WebElement SumAssuredtbox;
-	public WebElement getSumAssuredtbox()
-	{
-	return SumAssuredtbox;
-	}
 
-
-	//Element locator product details for Policy Term tbox
-	@FindBy(xpath="//input[@class='ng-pristine ng-valid ng-touched'][2]")
-	private WebElement PolicyTermtbox;
-	public WebElement getPolicyTermtbox()
-	{
-	return PolicyTermtbox;
-	}
-
-
-	RENEWAL PAYMENT
+	//RENEWAL PAYMENT
 
 	//Element locator customer type for individual billing radio button
 
@@ -232,7 +243,7 @@ public class PlanDetails {
 	return premiumProposerNoradiobtn;
 	}
 
-	PAYOUT DETAILS
+	//PAYOUT DETAILS
 
 
 	//Element locator payout details for payout details not required check box
@@ -264,7 +275,7 @@ public class PlanDetails {
 	}
 
 
-	//Element locator payout details for  Account Holders Name textfield
+	//Element locator payout details for  Account Holders Name text field
 
 	@FindBy(xpath="//input[@name='acName']")
 	private WebElement AccountHoldersNametextfield;
@@ -273,7 +284,7 @@ public class PlanDetails {
 	return AccountHoldersNametextfield;
 	}
 
-	//Element locator payout details for IFSC code textfield
+	//Element locator payout details for IFSC code text field
 
 	@FindBy(xpath="//input[@id='ifscCode']")
 	private WebElement IFSCcodetextfield;
@@ -282,15 +293,16 @@ public class PlanDetails {
 	return IFSCcodetextfield;
 	}
 
-	//Element locator payout details for IFSC code not available checkbox
+	//Element locator payout details for IFSC code not available check box
 
 	@FindBy(xpath="//label[@for='futurePaymentnoIfsc']")
 	private WebElement IFSCcodenotavailableCbox1;
 	public WebElement getIFSCcodenotavailableCbox1()
 	{
 	return IFSCcodenotavailableCbox1;
+	}
 
-	PREMIUM PAYER
+	//PREMIUM PAYER
 
 	//Element locator premium payer for NO radio button
 
@@ -301,19 +313,27 @@ public class PlanDetails {
 	return NoRadiobutton;
 	}
 
-	E-COMMENTS
+	//E-COMMENTS
 
-	//Element locator E-COMMENTS for Comments textfield
+	//Element locator E-COMMENTS for Comments text field
 
 	@FindBy(xpath="//textarea[@placeholder='Enter Comment']")
 	private WebElement   Commentstextfield;
-	public WebElement get Commentstextfield()
+	public WebElement getCommentstextfield()
 	{
 	return Commentstextfield;
 	}
-
-
-
-
-
+      
+	WebDriver driver;
+	
+	public PlanDetails(WebDriver driver) {
+	this.driver=driver;
+	PageFactory.initElements(driver, this);
+	}
 }
+
+
+
+
+
+
