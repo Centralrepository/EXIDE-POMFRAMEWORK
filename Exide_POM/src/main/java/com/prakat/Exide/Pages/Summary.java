@@ -1,10 +1,6 @@
 package com.prakat.Exide.Pages;
 
-public class Summary 
-{
-	package com.prakat.Exide.Pages;
-
-	import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.support.FindBy;
 
 	public class Summary 
@@ -68,4 +64,4 @@ public class Summary
 
 
 
-}
+
