@@ -1,9 +1,12 @@
 package com.prakat.Exide.Pages;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+
 
 public class PlanDetails {
 
@@ -13,19 +16,19 @@ public class PlanDetails {
 	
 	//Element locator product details for Sum Assured tbox
 		@FindBy(xpath="//input[@name='Sum Assured']")
-		private WebElement SumAssuredtbox;
-		public WebElement getSumAssuredtbox()
+		private WebElement SumAssuredtbox1;
+		public WebElement getSumAssuredtbox1()
 		{
-		return SumAssuredtbox;
+		return SumAssuredtbox1;
 		}
 
 
 		//Element locator product details for Policy Term tbox
 		@FindBy(xpath="//input[@class='ng-pristine ng-valid ng-touched'][2]")
-		private WebElement PolicyTermtbox;
-		public WebElement getPolicyTermtbox()
+		private WebElement PolicyTermtbox1;
+		public WebElement getPolicyTermtbox1()
 		{
-		return PolicyTermtbox;
+		return PolicyTermtbox1;
 		}
 	
 	//Element locator product details for payment frequency dropdown
@@ -93,6 +96,27 @@ public class PlanDetails {
 
 
 	//RENEWAL PAYMENT
+	//Element locator product details for Sum Assured tbox
+	@FindBy(xpath="//tr[1]//td[4]//input[1]")
+	private WebElement SumAssuredtbox;
+	public WebElement getSumAssuredtbox()
+	{
+		SumAssuredtbox.click();
+	return SumAssuredtbox;
+	}
+
+
+	//Element locator product details for Policy Term tbox
+	@FindBy(xpath="//input[@class='ng-pristine ng-valid ng-touched'][2]")
+	private WebElement PolicyTermtbox;
+	public WebElement getPolicyTermtbox()
+	{
+	return PolicyTermtbox;
+	}
+
+
+//	RENEWAL PAYMENT
+
 
 	//Element locator customer type for individual billing radio button
 
@@ -243,7 +267,10 @@ public class PlanDetails {
 	return premiumProposerNoradiobtn;
 	}
 
-	//PAYOUT DETAILS
+
+
+//	PAYOUT DETAILS
+
 
 
 	//Element locator payout details for payout details not required check box
@@ -302,7 +329,9 @@ public class PlanDetails {
 	return IFSCcodenotavailableCbox1;
 	}
 
+
 	//PREMIUM PAYER
+
 
 	//Element locator premium payer for NO radio button
 
@@ -313,7 +342,9 @@ public class PlanDetails {
 	return NoRadiobutton;
 	}
 
-	//E-COMMENTS
+
+//	E-COMMENTS
+
 
 	//Element locator E-COMMENTS for Comments text field
 

@@ -231,7 +231,7 @@ public class CustomerPersonalDetails {
 	
 	
 	
-	@FindBy(id="communicationAddress1")
+/*	@FindBy(id="communicationAddress1")
 	private WebElement InsuredCommunicationAddress1;
 	public WebElement getInsuredCommunicationAddress1(){
 		return InsuredCommunicationAddress1;
@@ -391,11 +391,11 @@ public class CustomerPersonalDetails {
 	private WebElement CustAddrSaveDraft;
 	public WebElement getCustAddrSaveDraft(){
 		return CustAddrSaveDraft;
-	}	
+	}	*/
 	
 	//-------------------------------------
 	
-	@FindBy(id="occupation")
+/*	@FindBy(id="occupation")
 	private WebElement InsuredOccupation;
 	public WebElement getInsuredOccupation(){
 		return InsuredOccupation;
@@ -466,7 +466,7 @@ public class CustomerPersonalDetails {
 	private WebElement CustOccuSaveDraft;
 	public WebElement getCustOccuSaveDraft(){
 		return CustOccuSaveDraft;
-	}		
+	}		*/
 	
 	WebDriver driver;
 	
