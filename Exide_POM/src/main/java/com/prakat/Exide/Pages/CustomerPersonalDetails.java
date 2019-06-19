@@ -466,7 +466,12 @@ public class CustomerPersonalDetails {
 	private WebElement CustOccuSaveDraft;
 	public WebElement getCustOccuSaveDraft(){
 		return CustOccuSaveDraft;
-	}		*/
+	}	
+	
+		*/
+	
+	//Elements Locator For IncomeProofType
+	
 	
 	WebDriver driver;
 	

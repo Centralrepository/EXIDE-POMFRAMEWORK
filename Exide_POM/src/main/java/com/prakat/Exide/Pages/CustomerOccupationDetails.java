@@ -78,7 +78,32 @@ public class CustomerOccupationDetails {
 	private WebElement CustOccuSaveDraft;
 	public WebElement getCustOccuSaveDraft(){
 		return CustOccuSaveDraft;
-	}			
+	}	
+	
+	@FindBy(xpath="(//select[@name='incomeProofType'])[1]")
+	private WebElement paytype;
+	public WebElement getpaytype()
+	{
+	return paytype;
+	}
+
+	//Elements Locator For Financial year select feild
+	@FindBy(xpath="(//select[@name='incomeProofType'])[2]")
+	private WebElement finyear;
+	public WebElement getfinyear()
+	{
+	return finyear;
+	}
+
+	//Elements Locator For income text feild
+	@FindBy(xpath="(//input[@placeholder='Enter' and @type='number'])[4]")
+	private WebElement income;
+	public WebElement getincome()
+	{
+	return income;
+	}
+	
+	
 	WebDriver driver;
 	
 	public CustomerOccupationDetails(WebDriver driver) {

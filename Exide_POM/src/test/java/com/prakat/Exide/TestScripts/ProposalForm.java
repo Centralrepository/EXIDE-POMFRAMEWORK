@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,6 +17,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.prakat.Exide.Pages.CreditcardDetails;
 import com.prakat.Exide.Pages.CustomerAddressDetails;
 import com.prakat.Exide.Pages.CustomerOccupationDetails;
 import com.prakat.Exide.Pages.CustomerPersonalDetails;
@@ -25,6 +26,9 @@ import com.prakat.Exide.Pages.LoginPage;
 import com.prakat.Exide.Pages.NomineeDetails;
 import com.prakat.Exide.Pages.PlanDetails;
 import com.prakat.Exide.Pages.ProductSelection;
+import com.prakat.Exide.Pages.Questionnarie;
+import com.prakat.Exide.Pages.ReceiptCash;
+import com.prakat.Exide.Pages.Summary;
 import com.prakat.Generic.Helper.BaseTest;
 import com.prakat.Generic.Helper.ConstantHelper;
 import com.prakat.Generic.Helper.DropdownHelper;
@@ -51,7 +55,12 @@ public class ProposalForm extends BaseTest {
 			String addressProof, String mobileNum, String email, String preferedLang, String insuredOccupation,
 			String insuredDesignation, String OccuDesc, String insuredEmployer, String insuredIncome,
 			String fatherIncome, String fatherWork, String nmDOBday, String nmDOBmonth, String nmDOByear, String nomRelation,
-			String nmMaritalStatus, String nomShare, String sumAssured, String policyTerm, String FreqPayment, String PSDay, String PSMonth, String PSYear, String MedClass)
+			String nmMaritalStatus, String nomShare, String sumAssured, String policyTerm, String FreqPayment, String PSDay, String PSMonth, String PSYear, String MedClass, String IndAccountNo, String IndConfirmAccNo,
+			String AccType, String AccHoldersName, String IndIfscCode, String DebitDate, String ManDateAmount,
+			String Comment, String FreqPayHalfYearly, String CredCardHolder, String CredCardBrand,
+			String CreditCardNo, String ExpiryMonth, String ExpiryYear, String CardIssuer, String Height, String Weight,
+			String PayType, String BankTieUp, String EnterAmount, String IncomeProofType, String FinYear, String Income,
+			String SmokeHab)
 			throws IOException, Throwable {
 		BaseTest.logger = BaseTest.report.createTest("Click on add new");
 		WaitHelper wait = new WaitHelper();
@@ -65,7 +74,12 @@ public class ProposalForm extends BaseTest {
 		codetails = new CustomerOccupationDetails(driver);
 		nomdetails = new NomineeDetails(driver);
 		plndetails = new PlanDetails(driver);
+		credcarddetails = new CreditcardDetails(driver);
 		drop = new DropdownHelper();
+		questionnarie = new Questionnarie(driver);
+		receiptcash = new ReceiptCash(driver);
+		summary = new Summary(driver);
+		
 		// JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		System.out.println("vanitha");
@@ -124,6 +138,7 @@ public class ProposalForm extends BaseTest {
 		// String advcode=xlib.getExcelData("ProductName", 2, 0);
 		System.out.println(advisorCode);
 		prodSel.getAdvisorCode().sendKeys(advisorCode);
+		Thread.sleep(2000);
 		prodSel.getStatusText().click();
 		
 		if (prodSel.getValidAdvisorMsg().isDisplayed()) {
@@ -227,6 +242,7 @@ public class ProposalForm extends BaseTest {
 		cpdetail.getCustHasNoPrevPolicyNum().click();
 		Thread.sleep(2000);
 		cpdetail.getPrevPolicySearch().click();
+		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
 		Thread.sleep(2000);
 		cpdetail.getAddNewCustomerRadio().click();
@@ -264,7 +280,7 @@ public class ProposalForm extends BaseTest {
 		cadetail.getCityText().click();
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer2\"]').scrollTop=200");
-
+		
 		drop.getSelectByVisibleText(cadetail.getInsuredAddressProof(), addressProof);
 		Thread.sleep(2000);
 		cadetail.getSameAddressYesBtn().click();
@@ -288,6 +304,11 @@ public class ProposalForm extends BaseTest {
 		codetails.getInsuredOccupationDesc().sendKeys(OccuDesc);
 		drop.getSelectByVisibleText(codetails.getInsuredEmployerName(), insuredEmployer);
 		codetails.getInsuredAnnualIncome().sendKeys(insuredIncome);
+		codetails.getInsuredIncomeProofCheckBox().click();
+		Thread.sleep(1000);
+		drop.getSelectByVisibleText(codetails.getpaytype(), IncomeProofType);
+		drop.getSelectByVisibleText(codetails.getfinyear(), FinYear);
+		codetails.getincome().sendKeys(Income);
 		codetails.getInsuredFatherAnnualIncome().sendKeys(fatherIncome);
 		drop.getSelectByVisibleText(codetails.getInsuredFatherDesignation(), fatherWork);
 		Thread.sleep(1000);
@@ -302,6 +323,7 @@ public class ProposalForm extends BaseTest {
 		nomdetails.getyeartextbox().sendKeys(nmDOByear);
 		Thread.sleep(5000);
 		nomdetails.getMaleRadiobtn1().click();
+		Thread.sleep(2000);
 		nomdetails.getpanchkbox().click();
 		nomdetails.getaadharchkbox().click();
 		nomdetails.geteinsurancechkbox().click();
@@ -351,6 +373,115 @@ public class ProposalForm extends BaseTest {
         plndetails.getsaveandproceedbtn().click();
         plndetails.getindividualBillingRadiobtn().click();
         plndetails.getDebitCardradiobtn().click();
+        plndetails.getDebitAccNo().sendKeys(IndAccountNo);
+        plndetails.getdebitconfirmAccNotfield().sendKeys(IndConfirmAccNo);
+        drop.getSelectByVisibleText(plndetails.getdebitAccTypeDropdown(), AccType);
+        plndetails.getdebitAccFnametfield().sendKeys(AccHoldersName);
+        Thread.sleep(2000);
+        plndetails.getifscCodeValuetfield().sendKeys(IndIfscCode);
+        Thread.sleep(5000);
+        //plndetails.getMICRcodetfield().click();
+        
+        //Thread.sleep(1000);
+        drop.getSelectByVisibleText(plndetails.getpreferreddebitdateDropdown(), DebitDate);
+        plndetails.getMandateAmounttextfield().sendKeys(ManDateAmount);
+        Thread.sleep(2000);
+        plndetails.getpremiumProposerNoradiobtn().click();
+        plndetails.getsaveAndProceedForRenewalPayment().click();
+        Thread.sleep(2000);
+      
+        
+        //Payout details
+        plndetails.getpayoutdetailsnotrequiredCbox().click();
+        plndetails.getsaveAndProceedForPayoutDetails().click();
+        Thread.sleep(2000);
+        
+        //premier details
+        plndetails.getNoRadiobutton().click();;
+        plndetails.getsaveAndProceedForPremierPayer().click();
+        Thread.sleep(2000);
+        
+        //E comments
+        plndetails.getCommentstextfield().sendKeys(Comment);
+        plndetails.getsaveAndProceedForEcomment().click();
+        Thread.sleep(2000);
+        
+        //Non reneval Half yearly
+        plndetails.getPlanDeatails().click();
+        Thread.sleep(3000);
+        
+        
+        //Half yearly
+        drop.getSelectByVisibleText(plndetails.getFrequencyPaymentDropdown(), FreqPayHalfYearly);
+        plndetails.getdaytfield().sendKeys(PSDay);
+        plndetails.getmonthtfield().sendKeys(PSMonth);
+        plndetails.getyeartfield().sendKeys(PSYear);
+        Thread.sleep(2000);
+        
+        drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
+        Thread.sleep(1000);
+        plndetails.getsaveandproceedbtn().click();
+        plndetails.getindividualBillingRadiobtn().click();
+        
+        //Credit card details
+        credcarddetails.getcreditCardRadiobutton().click();
+        credcarddetails.getcreditHoldernametfield().sendKeys(CredCardHolder);
+        credcarddetails.getcreditccBrandDropdown().sendKeys(CredCardBrand);
+        credcarddetails.getcreditccNumbertfield().sendKeys(CreditCardNo);
+        credcarddetails.getExpirydateMonthtfield().sendKeys(ExpiryMonth);
+        credcarddetails.getExpirydateYeartfield().sendKeys(ExpiryYear);
+        credcarddetails.getCardIssuerDropdown().sendKeys(CardIssuer);
+        credcarddetails.getdebitDateDropdown().sendKeys(DebitDate);
+        Thread.sleep(1000);
+        credcarddetails.getsaveandproceedForCreditReneval().click();
+        Thread.sleep(1000);
+        credcarddetails.getsaveandproceedForCredPayout().click();
+        Thread.sleep(1000);
+        credcarddetails.getsaveandproceedForCredPremiumt().click();
+        
+        //E comments
+        plndetails.getCommentstextfield().sendKeys(Comment);
+        plndetails.getsaveAndProceedForEcomment().click();
+        Thread.sleep(8000);
+        
+        //Questionaries
+       
+        
+        //questionnarie.getExitingInsuranceDetailsText().click();
+        questionnarie.getsaveandproceedQuestionInsuCover().click();
+        Thread.sleep(4000);
+        questionnarie.gethealthHeight().sendKeys(Height);
+        questionnarie.gethealthWeight().sendKeys(Weight);
+       /* Thread.sleep(4000);
+        eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=800");*/
+        //eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
+        Thread.sleep(5000);
+        drop.getSelectByVisibleText(questionnarie.getnonsmoke(), SmokeHab);
+        
+        questionnarie.getdrink().click();
+        Thread.sleep(2000);
+        questionnarie.getsaveandproceedQuestionHealth().click();
+        
+        //Reciept cash
+        drop.getSelectByVisibleText(receiptcash.getcash(), PayType);
+        Thread.sleep(2000);
+        drop.getSelectByVisibleText(receiptcash.getbanktieup(), BankTieUp);
+        receiptcash.getcashamt().sendKeys(EnterAmount);
+        receiptcash.getproceedReciept().click();
+        Thread.sleep(2000);
+        
+        //summary
+        summary.getprocedwithchkbox().click();
+        summary.getsaveandvalidate().click();
+        
+        
+        
+        
+        
+        
+        
+        
+        
 		}
 
 }

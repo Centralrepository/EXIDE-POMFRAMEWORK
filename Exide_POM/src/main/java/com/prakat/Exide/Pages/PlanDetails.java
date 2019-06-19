@@ -174,12 +174,20 @@ public class PlanDetails {
 	{
 	return DebitCardradiobtn;
 	}
+	
+	//debit account number
+	@FindBy(xpath="//input[@name='debitAccNo']")
+	private WebElement DebitAccNo;
+	public WebElement getDebitAccNo()
+	{
+	return DebitAccNo;
+	}
 
 
 
 	//Element locator select the renewal payment mode for Confirm Bank account number text field
 
-	@FindBy(xpath="//input[@name='debitconfirmtAccNo']")
+	@FindBy(xpath="//input[@name='debitConfirmAccNo']")
 	private WebElement debitconfirmAccNotfield;
 	public WebElement getdebitconfirmAccNotfield()
 	{
@@ -197,7 +205,7 @@ public class PlanDetails {
 
 
 	//Element locator select the renewal payment mode for Acc holders name text field
-	@FindBy(xpath="//input[@name='debitAccFname']")
+	@FindBy(xpath="//input[@name='debitAccFName']")
 	private WebElement debitAccFnametfield;
 	public WebElement getdebitAccFnametfield()
 	{
@@ -206,7 +214,7 @@ public class PlanDetails {
 
 
 	//Element locator select the renewal payment mode for IFSC code text field
-	@FindBy(xpath="//input[@name='ifscCodeValue']")
+	@FindBy(xpath="(//input[@name='ifscCodeValue'])[1]")
 	private WebElement ifscCodeValuetfield;
 	public WebElement getifscCodeValuetfield()
 	{
@@ -224,7 +232,7 @@ public class PlanDetails {
 
 
 	//Element locator select the renewal payment mode for MICR code text field 
-	@FindBy(xpath="//input[@class='ng-pristine ng-valid ng-touched'][3]")
+	@FindBy(xpath="(//input[@type='text'])[22]")
 	private WebElement  MICRcodetfield;
 	public WebElement getMICRcodetfield()
 	{
@@ -252,7 +260,7 @@ public class PlanDetails {
 
 
 	//Element locator select the renewal payment mode for preferred debit date Dropdown
-	@FindBy(xpath="//select[@class='ng-pristine ng-valid ng-touched']")
+	@FindBy(xpath="(//div[@class='form-group']/label/following-sibling::select)[4]")
 	private WebElement  preferreddebitdateDropdown;
 	public WebElement getpreferreddebitdateDropdown()
 	{
@@ -285,6 +293,15 @@ public class PlanDetails {
 	{
 	return premiumProposerNoradiobtn;
 	}
+	
+	//saveAndProceed For RenewalPayment
+	@FindBy(xpath="(//button[contains(text(),' Save and Proceed ')])[2]")
+	private WebElement saveAndProceedForRenewalPayment;
+	public WebElement getsaveAndProceedForRenewalPayment()
+	{
+	return saveAndProceedForRenewalPayment;
+	}
+	
 
 
 
@@ -299,6 +316,13 @@ public class PlanDetails {
 	public WebElement getpayoutdetailsnotrequiredCbox()
 	{
 	return payoutdetailsnotrequiredCbox;
+	}
+	
+	@FindBy(xpath="(//button[contains(text(),' Save and Proceed ')])[3]")
+	private WebElement saveAndProceedForPayoutDetails;
+	public WebElement getsaveAndProceedForPayoutDetails()
+	{
+	return saveAndProceedForPayoutDetails;
 	}
 
 
@@ -360,6 +384,15 @@ public class PlanDetails {
 	{
 	return NoRadiobutton;
 	}
+	
+	//saveAndProceed For PremierPayer
+	@FindBy(xpath="(//button[contains(text(),' Save and Proceed ')])[4]")
+	private WebElement saveAndProceedForPremierPayer;
+	public WebElement getsaveAndProceedForPremierPayer()
+	{
+	return saveAndProceedForPremierPayer;
+	}
+
 
 
 //	E-COMMENTS
@@ -373,6 +406,22 @@ public class PlanDetails {
 	{
 	return Commentstextfield;
 	}
+	
+	//saveAndProceed For E-comment
+		@FindBy(xpath="(//button[contains(text(),'Save and Proceed')])[5]")
+		private WebElement saveAndProceedForEcomment;
+		public WebElement getsaveAndProceedForEcomment()
+		{
+		return saveAndProceedForEcomment;
+		}
+		
+		@FindBy(xpath="//span[contains(text(),'Plan Details')]")
+		private WebElement PlanDeatails;
+		public WebElement getPlanDeatails()
+		{
+		return PlanDeatails;
+		}
+	
       
 	WebDriver driver;
 	

@@ -16,6 +16,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.prakat.Exide.Pages.CreditcardDetails;
 import com.prakat.Exide.Pages.CustomerAddressDetails;
 import com.prakat.Exide.Pages.CustomerOccupationDetails;
 import com.prakat.Exide.Pages.CustomerPersonalDetails;
@@ -25,6 +26,9 @@ import com.prakat.Exide.Pages.LoginPage;
 import com.prakat.Exide.Pages.NomineeDetails;
 import com.prakat.Exide.Pages.PlanDetails;
 import com.prakat.Exide.Pages.ProductSelection;
+import com.prakat.Exide.Pages.Questionnarie;
+import com.prakat.Exide.Pages.ReceiptCash;
+import com.prakat.Exide.Pages.Summary;
 
 public class BaseTest {
 	public static WebDriver driver;
@@ -42,6 +46,10 @@ public class BaseTest {
 	public CustomerOccupationDetails codetails;
 	public NomineeDetails nomdetails;
 	public PlanDetails plndetails;
+	public CreditcardDetails credcarddetails;
+	public Questionnarie questionnarie;
+	public ReceiptCash receiptcash;
+	public Summary summary;
 	
 	public static ExtentReports report;
 	public static ExtentTest logger;	

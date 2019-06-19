@@ -20,7 +20,7 @@ public class CreditcardDetails {
 	}
 
 	//Element locator Renewal payment credit card for credit card Holders name text field
-	@FindBy(xpath="//input[@name='creditHoldername']")
+	@FindBy(xpath="(//input[@placeholder='Enter Name'])[1]")
 	private WebElement  creditHoldernametfield;
 	public WebElement getcreditHoldernametfield()
 	{
@@ -46,7 +46,7 @@ public class CreditcardDetails {
 
 
 	//Element locator Renewal payment credit card for Expirydate Month text field
-	@FindBy(xpath="//input[@name='month'][2]")
+	@FindBy(xpath="(//input[@name='month'])[2]")
 	private WebElement  ExpirydateMonthtfield;
 	public WebElement getExpirydateMonthtfield()
 	{
@@ -54,11 +54,36 @@ public class CreditcardDetails {
 	}
 
 	//Element locator Renewal payment credit card for Expirydate Year text field
-	@FindBy(xpath="//input[@name='year'][2]")
+	@FindBy(xpath="(//input[@name='year'])[2]")
 	private WebElement  ExpirydateYeartfield;
 	public WebElement getExpirydateYeartfield()
 	{
 	return  ExpirydateYeartfield;
+	}
+	
+	//save and proceed reneval payment
+
+	@FindBy(xpath="(//button[contains(text(),' Save and Proceed ')])[2]")
+	private WebElement saveandproceedForCreditReneval;
+	public WebElement getsaveandproceedForCreditReneval()
+	{
+	return saveandproceedForCreditReneval;
+	}
+	
+	
+
+	@FindBy(xpath="(//button[contains(text(),' Save and Proceed ')])[3]")
+	private WebElement saveandproceedForCredPayout;
+	public WebElement getsaveandproceedForCredPayout()
+	{
+	return saveandproceedForCredPayout;
+	}
+	
+	@FindBy(xpath="(//button[contains(text(),' Save and Proceed ')])[4]")
+	private WebElement saveandproceedForCredPremiumt;
+	public WebElement getsaveandproceedForCredPremiumt()
+	{
+	return saveandproceedForCredPremiumt;
 	}
 
 	//Element locator Renewal payment credit card for credit issuer drop down
@@ -68,7 +93,7 @@ public class CreditcardDetails {
 	{
 	return CardIssuerDropdown;
 	}
-
+	
 
 	//Element locator Renewal payment credit card for preffer Debit date drop down
 	@FindBy(xpath="//select[@name='debitDate']")
@@ -77,6 +102,8 @@ public class CreditcardDetails {
 	{
 	return debitDateDropdown;
 	}
+	
+	
 
 	//PREMIUM PAYER
 

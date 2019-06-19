@@ -1,7 +1,9 @@
 package com.prakat.Exide.Pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class Questionnarie {
 	//Elements Locator For Questionnarie 51-54 For No Radio Botton
@@ -19,6 +21,51 @@ public class Questionnarie {
 		{
 		return noRadioBtn;
 		}
+		
+		
+		//ExitingInsuranceDetails Text
+		@FindBy(xpath="//div[contains(text(),'Existing Insurance Details')]")
+		private WebElement ExitingInsuranceDetailsText;
+		public WebElement getExitingInsuranceDetailsText()
+		{
+		return ExitingInsuranceDetailsText;
+		}
+		
+		//Questionaries
+		@FindBy(xpath="(//button[contains(text(),'Save and Proceed')])[1]")
+		private WebElement saveandproceedQuestionInsuCover;
+		public WebElement getsaveandproceedQuestionInsuCover()
+		{
+		return saveandproceedQuestionInsuCover;
+		}
+
+		//Height, health and life style
+		@FindBy(xpath="//input[@placeholder='Enter height']")
+		private WebElement  healthHeight;
+		public WebElement gethealthHeight()
+		{
+		return healthHeight;
+		}
+		
+
+		//weight, health and life style
+		@FindBy(xpath="//input[@placeholder='Enter weight']")
+		private WebElement  healthWeight;
+		public WebElement gethealthWeight()
+		{
+		return healthWeight;
+		}
+		
+		
+		@FindBy(xpath="(//button[2][contains(text(),'Save and Proceed')])[2]")
+		private WebElement saveandproceedQuestionHealth;
+		public WebElement getsaveandproceedQuestionHealth()
+		{
+		return saveandproceedQuestionHealth;
+		}
+
+		
+
 		
 		//Elements Locator For health and life save and draft
 		@FindBy(xpath="(//button[@class='btn btn-default'])[1]")
@@ -77,7 +124,9 @@ public class Questionnarie {
 					}
 					
 					//Elements Locator For alcohol drinking check box
-					@FindBy(xpath="//label[@for='noDrink']")
+					//@FindBy(xpath="//label[@for='noDrink']")
+					@FindBy(xpath="//*[text()='Does not drink']")
+							//div[@class='form-check']/input[@id='noDrink']/following-sibling::label")
 					private WebElement drink;
 					public WebElement getdrink()
 					{
@@ -130,6 +179,24 @@ public class Questionnarie {
 					public WebElement getsaveproceed()
 					{
 					return saveproceed;
+					}
+					
+					//Elements Locator questionarie Non Smoker select field
+					@FindBy(xpath="(//div[@class='form-group']//select)[2]")
+					private WebElement nonsmoke;
+					public WebElement getnonsmoke()
+					{
+					return nonsmoke;
+					}
+
+					
+					
+					WebDriver driver;
+					
+					public Questionnarie(WebDriver driver)
+					{
+					this.driver=driver;
+					PageFactory.initElements(driver, this);
 					}
 
 }

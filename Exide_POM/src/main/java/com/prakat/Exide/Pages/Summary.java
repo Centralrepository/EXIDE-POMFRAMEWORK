@@ -1,7 +1,9 @@
 package com.prakat.Exide.Pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 	public class Summary 
 	{
@@ -50,14 +52,19 @@ import org.openqa.selenium.WebElement;
 				
 				//Elements locators for save and validate
 				
-				@FindBy(xpath="//button[@class='btn btn-default'][1]")
+				@FindBy(xpath="//button[contains(text(),' Save and Validate ')]")
 				private WebElement saveandvalidate;
 				public WebElement getsaveandvalidate()
 				{
 				  return saveandvalidate;
 				}
 				
+				WebDriver driver;
 				
+				public Summary(WebDriver driver) {
+				this.driver=driver;
+				PageFactory.initElements(driver, this);
+				}
 				
 				
 	}

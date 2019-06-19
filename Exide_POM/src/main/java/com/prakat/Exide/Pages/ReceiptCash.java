@@ -1,7 +1,9 @@
 package com.prakat.Exide.Pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ReceiptCash
 {
@@ -39,14 +41,19 @@ public class ReceiptCash
 		}
 		
 		//Elements Locator For save and proceed button
-		@FindBy(xpath="//button[@class='btn btn-primary']")
-		private WebElement poceed;
-		public WebElement getproceed()
+		@FindBy(xpath="//button[contains(text(),' Save and Proceed ')]")
+		private WebElement proceedReciept;
+		public WebElement getproceedReciept()
 		{
-		return getproceed();
+		return proceedReciept;
 		}
 		
+		WebDriver driver;
 		
+		public ReceiptCash(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+		}
 	
 	
 }
