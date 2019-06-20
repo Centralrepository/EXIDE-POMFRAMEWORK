@@ -504,7 +504,7 @@ public class ProposalFormYear extends BaseTest {
         //summary
         summary.getprocedwithchkbox().click();
         summary.getsaveandvalidate().click();
-        //completed
+        //completed with years
         
         
         
