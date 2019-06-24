@@ -15,7 +15,7 @@ public class PlanDetails {
 	
 	//PRODUCT DETAILS
 	
-	//Element locator product details for Sum Assured tbox
+	//Element locators product details for Sum Assured tbox
 		@FindBy(xpath="//input[@name='Sum Assured']")
 		private WebElement SumAssuredtbox1;
 		public WebElement getSumAssuredtbox1()
@@ -42,7 +42,7 @@ public class PlanDetails {
 	return PaymentFrequencyDropdown;
 	}
 	
-	//frequecy paymet dropdown
+	//frequecy payment dropdown
 
 	@FindBy(xpath="//select[@name='paymentFrequency']")
 	private WebElement FrequencyPaymentDropdown;
