@@ -61,7 +61,7 @@ public class ReceiptCreditCard
 	return ccamt;
 	}
 
-	//Elements Locator For Approval code field
+	//Elements Locator For credit card Approval code field
 	@FindBy(xpath="//input[@name='ccApproval']")
 	private WebElement approval;
 	public WebElement getapproval()
