@@ -417,7 +417,7 @@ public class PFHalfYearly extends BaseTest {
         //summary
         summary.getprocedwithchkbox().click();
         summary.getsaveandvalidate().click();
-        //completed
+        //completed with half year
         
 		
 	}
