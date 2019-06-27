@@ -3,15 +3,8 @@ package com.prakat.Exide.TestScripts;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -25,7 +18,6 @@ import com.prakat.Exide.Pages.CustomerPersonalDetails;
 import com.prakat.Exide.Pages.HomePage;
 import com.prakat.Exide.Pages.LoginPage;
 import com.prakat.Exide.Pages.NomineeDetails;
-import com.prakat.Exide.Pages.NonebillingDetails;
 import com.prakat.Exide.Pages.PlanDetails;
 import com.prakat.Exide.Pages.ProductSelection;
 import com.prakat.Exide.Pages.Questionnarie;
@@ -41,15 +33,15 @@ import com.prakat.Generic.Helper.ScreenshotHelper;
 import com.prakat.Generic.Helper.WaitHelper;
 
 @Listeners(ScreenshotHelper.class)
-public class ProposalFormMonthly extends BaseTest {
+public class ProposalHalfYearly extends BaseTest {
 
 	@DataProvider
-	public Object[][] getProductData(){
+	public Object[][] getProductData1(){
 		Object data[][] = ExcelDataProvider.getTestData("ProposalFormMon");
 		return data;
 	}
 
-	@Test(dataProvider = "getProductData")
+	@Test(dataProvider = "getProductData1")
 	public void ProductDetails(String productName, String proposalNo, String advisorCode, String accountNum,
 			String custRelationship, String day, String month, String year, String customerTitle, String ageProof,
 			String insuredFN, String insuredMN, String insuredLN, String idProof, String idProofNum, String education,
@@ -376,77 +368,16 @@ public class ProposalFormMonthly extends BaseTest {
 		Thread.sleep(10000);
 		logger.pass("Nominee permanent address added successfully");
 		
-//		logger.pass("Nominee address & conatct details added successfully");
 		
-		//plndetails.getindividualBillingRadiobtn().click();
-		//System.out.println(plndetails.getTitleBar().getText());
-	
+		
+		
 		plndetails.getSumAssuredtbox().sendKeys(sumAssured);
 		Thread.sleep(5000);
 		//plndetails.getPolicyTermtbox().click();
 		Thread.sleep(2000);
 		plndetails.getPolicyTermtbox().sendKeys(policyTerm);
 		
-		
-		drop.getSelectByVisibleText(plndetails.getFrequencyPaymentDropdown(), FreqPayment);
-		//drop.getSelectByVisibleTex
-		Thread.sleep(2000);
-		//eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
-        //Thread.sleep(2000);
-		plndetails.getdaytfield().sendKeys(PSDay);
-        plndetails.getmonthtfield().sendKeys(PSMonth);
-        plndetails.getyeartfield().sendKeys(PSYear);
-        Thread.sleep(2000);
-        drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
-        Thread.sleep(1000);
-        plndetails.getsaveandproceedbtn().click();
-        logger.pass("successfully added product details");
-        
-        Thread.sleep(1000);
-        plndetails.getindividualBillingRadiobtn().click();
-        plndetails.getDebitCardradiobtn().click();
-        Thread.sleep(1000);
-        plndetails.getDebitAccNo().sendKeys(IndAccountNo);
-        plndetails.getdebitconfirmAccNotfield().sendKeys(IndConfirmAccNo);
-        drop.getSelectByVisibleText(plndetails.getdebitAccTypeDropdown(), AccType);
-        plndetails.getdebitAccFnametfield().sendKeys(AccHoldersName);
-        Thread.sleep(2000);
-        plndetails.getifscCodeValuetfield().sendKeys(IndIfscCode);
-        Thread.sleep(5000);
-        //plndetails.getMICRcodetfield().click();
-        
-        //Thread.sleep(1000);
-        drop.getSelectByVisibleText(plndetails.getpreferreddebitdateDropdown(), DebitDate);
-        plndetails.getMandateAmounttextfield().sendKeys(ManDateAmount);
-        Thread.sleep(2000);
-        plndetails.getpremiumProposerNoradiobtn().click();
-        plndetails.getsaveAndProceedForRenewalPayment().click();
-        logger.pass("Done with reneval payment");
-        Thread.sleep(2000);
-      
-        
-        //Payout details
-        plndetails.getpayoutdetailsnotrequiredCbox().click();
-        Thread.sleep(1000);
-        plndetails.getsaveAndProceedForPayoutDetails().click();
-        Thread.sleep(2000);
-        
-        //premier details
-        plndetails.getNoRadiobutton().click();;
-        Thread.sleep(1000);
-        plndetails.getsaveAndProceedForPremierPayer().click();
-        Thread.sleep(2000);
-        
-        //E comments
-        plndetails.getCommentstextfield().sendKeys(Comment);
-        plndetails.getsaveAndProceedForEcomment().click();
-        logger.pass("Plan details added successfully");
-        Thread.sleep(2000);
-        
-       /* //Non reneval Half yearly
-        plndetails.getPlanDeatails().click();
-        Thread.sleep(3000);
-        
+	
         
         //Half yearly
         drop.getSelectByVisibleText(plndetails.getFrequencyPaymentDropdown(), FreqPayHalfYearly);
@@ -458,10 +389,12 @@ public class ProposalFormMonthly extends BaseTest {
         drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
         Thread.sleep(1000);
         plndetails.getsaveandproceedbtn().click();
-        plndetails.getindividualBillingRadiobtn().click();
+        plndetails.getnoneBillingRadiobtn().click();
+        logger.pass("successfully added product details");
+        //plndetails.getindividualBillingRadiobtn().click();
         
         //Credit card details
-        credcarddetails.getcreditCardRadiobutton().click();
+      /*  credcarddetails.getcreditCardRadiobutton().click();
         credcarddetails.getcreditHoldernametfield().sendKeys(CredCardHolder);
         credcarddetails.getcreditccBrandDropdown().sendKeys(CredCardBrand);
         credcarddetails.getcreditccNumbertfield().sendKeys(CreditCardNo);
@@ -471,15 +404,24 @@ public class ProposalFormMonthly extends BaseTest {
         credcarddetails.getdebitDateDropdown().sendKeys(DebitDate);
         Thread.sleep(1000);
         credcarddetails.getsaveandproceedForCreditReneval().click();
+        Thread.sleep(1000);*/
+        nonebilling.getsaveandproceedreneval().click();
+		
+        nonebilling.getpayoutdetailsnotrequiredCbox().click();
+        nonebilling.getsaveandproceedpayout().click();
+        nonebilling.getNoRadiobutton().click();
+        nonebilling.getsaveandproceedPremiun().click();
         Thread.sleep(1000);
-        credcarddetails.getsaveandproceedForCredPayout().click();
-        Thread.sleep(1000);
-        credcarddetails.getsaveandproceedForCredPremiumt().click();
+        //nonebilling.getsaveandproceedForCredPremiumt().click();
         
         //E comments
         plndetails.getCommentstextfield().sendKeys(Comment);
-        plndetails.getsaveAndProceedForEcomment().click();
-        Thread.sleep(8000);  */
+        nonebilling.getsaveandprocedforEcomments().click();
+        logger.pass("plan details added  product details");
+
+        Thread.sleep(8000);
+        
+        
         
         //Questionaries
        
@@ -490,9 +432,8 @@ public class ProposalFormMonthly extends BaseTest {
         
         questionnarie.gethealthHeight().sendKeys(Height);
         questionnarie.gethealthWeight().sendKeys(Weight);
-        eventFiring.executeScript("document.querySelector('section[id='section2']').scrollTop=1000");
-        //Thread.sleep(4000);
-        //eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=1000");
+       //Thread.sleep(4000);
+        eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=1000");
         //Thread.sleep(5000);
         drop.getSelectByVisibleText(questionnarie.getnonsmoke(), SmokeHab);
         
@@ -500,52 +441,31 @@ public class ProposalFormMonthly extends BaseTest {
         Thread.sleep(2000);
         questionnarie.getsaveandproceedQuestionHealth().click();
         logger.pass("Questionnaire details filled successfully");
+		
+		
         
-       /* //Reciept cash
+        
+        
+        
+        
+        
         drop.getSelectByVisibleText(receiptcash.getcash(), PayType);
         Thread.sleep(2000);
         drop.getSelectByVisibleText(receiptcash.getbanktieup(), BankTieUp);
         receiptcash.getcashamt().sendKeys(EnterAmount);
         receiptcash.getproceedReciept().click();
-        Thread.sleep(2000);*/
-        
-        
-        //Cheque
-        drop.getSelectByVisibleText(receiptcheque.getpaytype(), payType);
-        drop.getSelectByVisibleText(receiptcheque.gettieup(), BankTie);
-        receiptcheque.getchequeno().sendKeys(ChequeNo);
-        receiptcheque.getchequeamt().sendKeys(ChequeAmt);
-        receiptcheque.getday().sendKeys(CheqDay);
-        receiptcheque.getmonth().sendKeys(CheqMon);
-        receiptcheque.getyear().sendKeys(CheqYr);
-        drop.getSelectByVisibleText(receiptcheque.getchequetype(), PaymentCheckType);
-        
-        receiptcheque.getbank().sendKeys(CheqBankName);
-        
-        receiptcheque.getbank().sendKeys(Keys.ARROW_DOWN);
-        receiptcheque.getbank().sendKeys(Keys.ENTER);
-        receiptcheque.getbankbr().sendKeys(BankBrancName);
-        receiptcheque.getbankaccno().sendKeys(BnkAccNo);
-        receiptcheque.getbankno().sendKeys(BnkAccConf);
-        receiptcheque.getname().sendKeys(BnkHoldName);
-        receiptcheque.getproceed().click();
-        logger.pass("Cheque details filled successfully");
+        logger.pass("Cash details added successfully");
+        Thread.sleep(2000);
         
         //summary
         summary.getprocedwithchkbox().click();
         summary.getsaveandvalidate().click();
         logger.pass("validated t-20 product successfully");
-        //completed
-        List<WebElement> list1 = driver.findElements(By.xpath("//*[@class='list-group-item']/label"));
-        int listlenth= list1.size();
-        for(int i=0;i<=listlenth-1;i++)
-        {
-        	list1.get(i).click();
-        }
         
         
-        
-        
+		
+		
+		
         
         
 		}

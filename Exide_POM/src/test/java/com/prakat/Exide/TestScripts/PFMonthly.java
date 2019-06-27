@@ -41,11 +41,11 @@ import com.prakat.Generic.Helper.ScreenshotHelper;
 import com.prakat.Generic.Helper.WaitHelper;
 
 @Listeners(ScreenshotHelper.class)
-public class ProposalFormMonthly extends BaseTest {
+public class PFMonthly extends BaseTest {
 
 	@DataProvider
 	public Object[][] getProductData(){
-		Object data[][] = ExcelDataProvider.getTestData("ProposalFormMon");
+		Object data[][] = ExcelDataProvider.getTestData("PFMonthly");
 		return data;
 	}
 
@@ -374,7 +374,6 @@ public class ProposalFormMonthly extends BaseTest {
 		nomdetails.getblankSpace().click();
 		nomdetails.getsaveandpro().click();
 		Thread.sleep(10000);
-		logger.pass("Nominee permanent address added successfully");
 		
 //		logger.pass("Nominee address & conatct details added successfully");
 		
@@ -397,11 +396,10 @@ public class ProposalFormMonthly extends BaseTest {
         plndetails.getmonthtfield().sendKeys(PSMonth);
         plndetails.getyeartfield().sendKeys(PSYear);
         Thread.sleep(2000);
+        
         drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
         Thread.sleep(1000);
         plndetails.getsaveandproceedbtn().click();
-        logger.pass("successfully added product details");
-        
         Thread.sleep(1000);
         plndetails.getindividualBillingRadiobtn().click();
         plndetails.getDebitCardradiobtn().click();
@@ -421,7 +419,6 @@ public class ProposalFormMonthly extends BaseTest {
         Thread.sleep(2000);
         plndetails.getpremiumProposerNoradiobtn().click();
         plndetails.getsaveAndProceedForRenewalPayment().click();
-        logger.pass("Done with reneval payment");
         Thread.sleep(2000);
       
         
@@ -440,7 +437,6 @@ public class ProposalFormMonthly extends BaseTest {
         //E comments
         plndetails.getCommentstextfield().sendKeys(Comment);
         plndetails.getsaveAndProceedForEcomment().click();
-        logger.pass("Plan details added successfully");
         Thread.sleep(2000);
         
        /* //Non reneval Half yearly
@@ -490,16 +486,14 @@ public class ProposalFormMonthly extends BaseTest {
         
         questionnarie.gethealthHeight().sendKeys(Height);
         questionnarie.gethealthWeight().sendKeys(Weight);
-        eventFiring.executeScript("document.querySelector('section[id='section2']').scrollTop=1000");
-        //Thread.sleep(4000);
-        //eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=1000");
+       //Thread.sleep(4000);
+        eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=1000");
         //Thread.sleep(5000);
         drop.getSelectByVisibleText(questionnarie.getnonsmoke(), SmokeHab);
         
         questionnarie.getdrink().click();
         Thread.sleep(2000);
         questionnarie.getsaveandproceedQuestionHealth().click();
-        logger.pass("Questionnaire details filled successfully");
         
        /* //Reciept cash
         drop.getSelectByVisibleText(receiptcash.getcash(), PayType);
@@ -529,12 +523,10 @@ public class ProposalFormMonthly extends BaseTest {
         receiptcheque.getbankno().sendKeys(BnkAccConf);
         receiptcheque.getname().sendKeys(BnkHoldName);
         receiptcheque.getproceed().click();
-        logger.pass("Cheque details filled successfully");
         
         //summary
         summary.getprocedwithchkbox().click();
         summary.getsaveandvalidate().click();
-        logger.pass("validated t-20 product successfully");
         //completed
         List<WebElement> list1 = driver.findElements(By.xpath("//*[@class='list-group-item']/label"));
         int listlenth= list1.size();

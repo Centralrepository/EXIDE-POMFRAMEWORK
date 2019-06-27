@@ -41,15 +41,14 @@ import com.prakat.Generic.Helper.ScreenshotHelper;
 import com.prakat.Generic.Helper.WaitHelper;
 
 @Listeners(ScreenshotHelper.class)
-public class ProposalFormMonthly extends BaseTest {
-
+public class ProposalFormYearly extends BaseTest {
 	@DataProvider
 	public Object[][] getProductData(){
-		Object data[][] = ExcelDataProvider.getTestData("ProposalFormMon");
+		Object data[][] = ExcelDataProvider.getTestData("PropFormYr");
 		return data;
 	}
 
-	@Test(dataProvider = "getProductData")
+	@Test(dataProvider = "getProductData1")
 	public void ProductDetails(String productName, String proposalNo, String advisorCode, String accountNum,
 			String custRelationship, String day, String month, String year, String customerTitle, String ageProof,
 			String insuredFN, String insuredMN, String insuredLN, String idProof, String idProofNum, String education,
@@ -65,7 +64,7 @@ public class ProposalFormMonthly extends BaseTest {
 			String PayType, String BankTieUp, String EnterAmount, String IncomeProofType, String FinYear, String Income,
 			String SmokeHab, String payType, String BankTie, String ChequeNo, String ChequeAmt,
 			String CheqDay, String CheqMon, String CheqYr, String PaymentCheckType, String CheqBankName, String BankBrancName,
-			String BnkAccNo, String BnkAccConf, String BnkHoldName)
+			String BnkAccNo, String BnkAccConf, String BnkHoldName, String FreqPayYearly, String PayTypeCredit )
 			throws IOException, Throwable {
 		BaseTest.logger = BaseTest.report.createTest("Click on add new");
 		WaitHelper wait = new WaitHelper();
@@ -95,11 +94,16 @@ public class ProposalFormMonthly extends BaseTest {
 		String actTitle = driver.getTitle();
 		Assert.assertEquals(actTitle, ConstantHelper.ExpPageTitle);
 		System.out.println("Login success");
-
+		
+		
+		
 		/*
+		
+		
+		
 		 * WebElement AddNewBtn=homePage.getAddNewBtn();
 		 * wait.waitForElementPresent(AddNewBtn, 10);
-		 */
+		 
 		Thread.sleep(10000);
 		homePage.getAddNewBtn().click();
 		// loginPage.getSkipForMobileLink().click();
@@ -126,13 +130,13 @@ public class ProposalFormMonthly extends BaseTest {
 
 		Thread.sleep(5000);
 
-/*		if (prodSel.getProposalErrorMsg().isDisplayed()) {
+		if (prodSel.getProposalErrorMsg().isDisplayed()) {
 			System.out.println("Invalid Proposal Number");
 		} else {
 			String actualProposalMsg = prodSel.getValidProposalMsg().getText();
 			System.out.println(actualProposalMsg);
 			Assert.assertEquals(actualProposalMsg, " Valid Proposal No ");
-		}*/
+		}
 		
 		
 		if (prodSel.getValidProposalMsg().isDisplayed()) {
@@ -146,8 +150,9 @@ public class ProposalFormMonthly extends BaseTest {
 		// String advcode=xlib.getExcelData("ProductName", 2, 0);
 		System.out.println(advisorCode);
 		prodSel.getAdvisorCode().sendKeys(advisorCode);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		prodSel.getStatusText().click();
+		Thread.sleep(2000);
 		
 		if (prodSel.getValidAdvisorMsg().isDisplayed()) {
 			System.out.println(" Valid Agent No ");
@@ -162,7 +167,7 @@ public class ProposalFormMonthly extends BaseTest {
 		//=======e policy page===============
 		
 		
-		/*boolean bval = false;
+		boolean bval = false;
 		// Assert.assertTrue(prodSel.getEPolicyYesBtn().isSelected());
 		bval = prodSel.getEPolicyYesBtn().isEnabled();
 		System.out.println("vanitha");
@@ -172,7 +177,7 @@ public class ProposalFormMonthly extends BaseTest {
 			System.out.println(expected);
 			// Assert.assertEquals("Select Insurance Repository", expected);
 			prodSel.getInsuranceRepository().click();
-			WebElement insuranceRepo = prodSel.getInsuranceRepository();*/
+			WebElement insuranceRepo = prodSel.getInsuranceRepository();
 		
 		
 		
@@ -182,19 +187,19 @@ public class ProposalFormMonthly extends BaseTest {
 		
 		
 
-			/*
+			
 			 * String expectedRepo[]=
 			 * {" CAMS Repository Services "," Central Insurance Repository "
 			 * ," Karvy Insurance Repository ",
 			 * " NSDL Database Management Ltd "," SHCIL Projects Limited "};
-			 */
+			 
 
-			/*List<String> repoList = Arrays.asList("Select", " CAMS Repository Services ",
+			List<String> repoList = Arrays.asList("Select", " CAMS Repository Services ",
 					" Central Insurance Repository ", " Karvy Insurance Repository ", " NSDL Database Management Ltd ",
 					" SHCIL Projects Limited ");
 			List<String> expectedOptions = new ArrayList<>();
-			expectedOptions.addAll(repoList);*/
-			/*
+			expectedOptions.addAll(repoList);
+			
 			 * List<String> expectedOptions=new ArrayList<String>();
 			 * expectedOptions.add("Select");
 			 * expectedOptions.add(" CAMS Repository Services ");
@@ -202,9 +207,9 @@ public class ProposalFormMonthly extends BaseTest {
 			 * expectedOptions.add(" Karvy Insurance Repository ");
 			 * expectedOptions.add(" NSDL Database Management Ltd ");
 			 * expectedOptions.add(" SHCIL Projects Limited ");
-			 */
+			 
 
-			/*List<String> actualOptions = new ArrayList<String>();
+			List<String> actualOptions = new ArrayList<String>();
 
 			List<WebElement> repo = drop.getOptions(insuranceRepo);
 			int reposize = repo.size();
@@ -229,7 +234,7 @@ public class ProposalFormMonthly extends BaseTest {
 		} else {
 			prodSel.getEPolicyNoBtn().click();
 			// prodSel.getEPolicySaveProceed().click();
-		}*/
+		}
 		
 		prodSel.getEPolicySaveProceed().click();
 		
@@ -343,9 +348,11 @@ public class ProposalFormMonthly extends BaseTest {
 		logger.pass("Proposal Form success");
 		
 		Thread.sleep(5000);
-		
-		Thread.sleep(5000);
 	
+		
+		
+		
+		
 		nomdetails.getdaybox().sendKeys(nmDOBday);
 		nomdetails.getmonthtextbox().sendKeys(nmDOBmonth);
 		nomdetails.getyeartextbox().sendKeys(nmDOByear);
@@ -373,8 +380,8 @@ public class ProposalFormMonthly extends BaseTest {
 		nomdetails.getNomineesharetxt().sendKeys(nomShare);
 		nomdetails.getblankSpace().click();
 		nomdetails.getsaveandpro().click();
-		Thread.sleep(10000);
 		logger.pass("Nominee permanent address added successfully");
+		Thread.sleep(10000);
 		
 //		logger.pass("Nominee address & conatct details added successfully");
 		
@@ -397,15 +404,11 @@ public class ProposalFormMonthly extends BaseTest {
         plndetails.getmonthtfield().sendKeys(PSMonth);
         plndetails.getyeartfield().sendKeys(PSYear);
         Thread.sleep(2000);
-        drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
-        Thread.sleep(1000);
-        plndetails.getsaveandproceedbtn().click();
-        logger.pass("successfully added product details");
         
-        Thread.sleep(1000);
+        drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
+        plndetails.getsaveandproceedbtn().click();
         plndetails.getindividualBillingRadiobtn().click();
         plndetails.getDebitCardradiobtn().click();
-        Thread.sleep(1000);
         plndetails.getDebitAccNo().sendKeys(IndAccountNo);
         plndetails.getdebitconfirmAccNotfield().sendKeys(IndConfirmAccNo);
         drop.getSelectByVisibleText(plndetails.getdebitAccTypeDropdown(), AccType);
@@ -421,35 +424,31 @@ public class ProposalFormMonthly extends BaseTest {
         Thread.sleep(2000);
         plndetails.getpremiumProposerNoradiobtn().click();
         plndetails.getsaveAndProceedForRenewalPayment().click();
-        logger.pass("Done with reneval payment");
         Thread.sleep(2000);
       
         
         //Payout details
         plndetails.getpayoutdetailsnotrequiredCbox().click();
-        Thread.sleep(1000);
         plndetails.getsaveAndProceedForPayoutDetails().click();
         Thread.sleep(2000);
         
         //premier details
         plndetails.getNoRadiobutton().click();;
-        Thread.sleep(1000);
         plndetails.getsaveAndProceedForPremierPayer().click();
         Thread.sleep(2000);
         
         //E comments
         plndetails.getCommentstextfield().sendKeys(Comment);
         plndetails.getsaveAndProceedForEcomment().click();
-        logger.pass("Plan details added successfully");
         Thread.sleep(2000);
         
-       /* //Non reneval Half yearly
+        //Non reneval Half yearly
         plndetails.getPlanDeatails().click();
         Thread.sleep(3000);
         
         
         //Half yearly
-        drop.getSelectByVisibleText(plndetails.getFrequencyPaymentDropdown(), FreqPayHalfYearly);
+        drop.getSelectByVisibleText(plndetails.getFrequencyPaymentDropdown(), FreqPayYearly);
         plndetails.getdaytfield().sendKeys(PSDay);
         plndetails.getmonthtfield().sendKeys(PSMonth);
         plndetails.getyeartfield().sendKeys(PSYear);
@@ -458,7 +457,11 @@ public class ProposalFormMonthly extends BaseTest {
         drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
         Thread.sleep(1000);
         plndetails.getsaveandproceedbtn().click();
-        plndetails.getindividualBillingRadiobtn().click();
+        logger.pass("successfully added product details");
+        
+        //Non reneval
+        plndetails.getnoneBillingRadiobtn().click();
+        //plndetails.getindividualBillingRadiobtn().click();
         
         //Credit card details
         credcarddetails.getcreditCardRadiobutton().click();
@@ -472,14 +475,20 @@ public class ProposalFormMonthly extends BaseTest {
         Thread.sleep(1000);
         credcarddetails.getsaveandproceedForCreditReneval().click();
         Thread.sleep(1000);
-        credcarddetails.getsaveandproceedForCredPayout().click();
+        nonebilling.getsaveandproceedreneval().click();
+        
+        nonebilling.getpayoutdetailsnotrequiredCbox().click();
+        nonebilling.getsaveandproceedpayout().click();
+        nonebilling.getNoRadiobutton().click();
+        nonebilling.getsaveandproceedPremiun().click();
         Thread.sleep(1000);
-        credcarddetails.getsaveandproceedForCredPremiumt().click();
+        //nonebilling.getsaveandproceedForCredPremiumt().click();
         
         //E comments
         plndetails.getCommentstextfield().sendKeys(Comment);
-        plndetails.getsaveAndProceedForEcomment().click();
-        Thread.sleep(8000);  */
+        nonebilling.getsaveandprocedforEcomments().click();
+        logger.pass("plan details added  product details");
+        Thread.sleep(8000);
         
         //Questionaries
        
@@ -490,9 +499,8 @@ public class ProposalFormMonthly extends BaseTest {
         
         questionnarie.gethealthHeight().sendKeys(Height);
         questionnarie.gethealthWeight().sendKeys(Weight);
-        eventFiring.executeScript("document.querySelector('section[id='section2']').scrollTop=1000");
-        //Thread.sleep(4000);
-        //eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=1000");
+       //Thread.sleep(4000);
+        eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=1000");
         //Thread.sleep(5000);
         drop.getSelectByVisibleText(questionnarie.getnonsmoke(), SmokeHab);
         
@@ -500,42 +508,23 @@ public class ProposalFormMonthly extends BaseTest {
         Thread.sleep(2000);
         questionnarie.getsaveandproceedQuestionHealth().click();
         logger.pass("Questionnaire details filled successfully");
+
         
-       /* //Reciept cash
-        drop.getSelectByVisibleText(receiptcash.getcash(), PayType);
+        //Reciept cash
+        drop.getSelectByVisibleText(receiptcash.getcash(), PayTypeCredit);
         Thread.sleep(2000);
         drop.getSelectByVisibleText(receiptcash.getbanktieup(), BankTieUp);
         receiptcash.getcashamt().sendKeys(EnterAmount);
         receiptcash.getproceedReciept().click();
-        Thread.sleep(2000);*/
-        
-        
-        //Cheque
-        drop.getSelectByVisibleText(receiptcheque.getpaytype(), payType);
-        drop.getSelectByVisibleText(receiptcheque.gettieup(), BankTie);
-        receiptcheque.getchequeno().sendKeys(ChequeNo);
-        receiptcheque.getchequeamt().sendKeys(ChequeAmt);
-        receiptcheque.getday().sendKeys(CheqDay);
-        receiptcheque.getmonth().sendKeys(CheqMon);
-        receiptcheque.getyear().sendKeys(CheqYr);
-        drop.getSelectByVisibleText(receiptcheque.getchequetype(), PaymentCheckType);
-        
-        receiptcheque.getbank().sendKeys(CheqBankName);
-        
-        receiptcheque.getbank().sendKeys(Keys.ARROW_DOWN);
-        receiptcheque.getbank().sendKeys(Keys.ENTER);
-        receiptcheque.getbankbr().sendKeys(BankBrancName);
-        receiptcheque.getbankaccno().sendKeys(BnkAccNo);
-        receiptcheque.getbankno().sendKeys(BnkAccConf);
-        receiptcheque.getname().sendKeys(BnkHoldName);
-        receiptcheque.getproceed().click();
-        logger.pass("Cheque details filled successfully");
+        logger.pass("Credit card details filled successfully");
+
+        Thread.sleep(2000);
         
         //summary
         summary.getprocedwithchkbox().click();
         summary.getsaveandvalidate().click();
         logger.pass("validated t-20 product successfully");
-        //completed
+        //completed with years123
         List<WebElement> list1 = driver.findElements(By.xpath("//*[@class='list-group-item']/label"));
         int listlenth= list1.size();
         for(int i=0;i<=listlenth-1;i++)
@@ -547,6 +536,8 @@ public class ProposalFormMonthly extends BaseTest {
         
         
         
+        
+        */
         
 		}
 
@@ -560,4 +551,3 @@ public class ProposalFormMonthly extends BaseTest {
  * sel.getSelectProductSearch().sendKeys(productName); } finally {
  * driver.close(); }
  */
-
