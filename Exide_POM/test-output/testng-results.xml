@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="69985" started-at="2019-06-20T12:35:58Z" finished-at="2019-06-20T12:37:08Z">
+  <suite name="Default suite" duration-ms="84537" started-at="2019-06-27T12:14:38Z" finished-at="2019-06-27T12:16:03Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="69985" started-at="2019-06-20T12:35:58Z" finished-at="2019-06-20T12:37:08Z">
-      <class name="com.prakat.Exide.TestScripts.ProposalFormMonthly">
-        <test-method status="PASS" signature="setUpSuite()[pri:0, instance:com.prakat.Exide.TestScripts.ProposalFormMonthly@3abbfa04]" name="setUpSuite" is-config="true" duration-ms="219" started-at="2019-06-20T12:35:57Z" finished-at="2019-06-20T12:35:58Z">
+    <test name="Default test" duration-ms="84537" started-at="2019-06-27T12:14:38Z" finished-at="2019-06-27T12:16:03Z">
+      <class name="com.prakat.Exide.TestScripts.PFHalfYearly">
+        <test-method status="PASS" signature="setUpSuite()[pri:0, instance:com.prakat.Exide.TestScripts.PFHalfYearly@14bf9759]" name="setUpSuite" is-config="true" duration-ms="334" started-at="2019-06-27T12:14:38Z" finished-at="2019-06-27T12:14:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpSuite -->
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:com.prakat.Exide.TestScripts.ProposalFormMonthly@3abbfa04]" name="beforeTest" is-config="true" duration-ms="15620" started-at="2019-06-20T12:35:58Z" finished-at="2019-06-20T12:36:13Z">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:com.prakat.Exide.TestScripts.PFHalfYearly@14bf9759]" name="beforeTest" is-config="true" duration-ms="13406" started-at="2019-06-27T12:14:38Z" finished-at="2019-06-27T12:14:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="FAIL" signature="ProductDetails(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.prakat.Exide.TestScripts.ProposalFormMonthly@3abbfa04]" name="ProductDetails" duration-ms="53105" started-at="2019-06-20T12:36:14Z" data-provider="getProductData" finished-at="2019-06-20T12:37:07Z">
+        <test-method status="FAIL" signature="ProductDetails(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.prakat.Exide.TestScripts.PFHalfYearly@14bf9759]" name="ProductDetails" duration-ms="69171" started-at="2019-06-27T12:14:53Z" data-provider="getProductData" finished-at="2019-06-27T12:16:02Z">
           <params>
             <param index="0">
               <value>
@@ -24,7 +24,7 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[LN000003]]>
+                <![CDATA[LN000004]]>
               </value>
             </param>
             <param index="2">
@@ -34,422 +34,277 @@
             </param>
             <param index="3">
               <value>
-                <![CDATA[1111111111111]]>
+                <![CDATA[Self]]>
               </value>
             </param>
             <param index="4">
               <value>
-                <![CDATA[Self]]>
+                <![CDATA[1]]>
               </value>
             </param>
             <param index="5">
               <value>
-                <![CDATA[1]]>
+                <![CDATA[7]]>
               </value>
             </param>
             <param index="6">
               <value>
-                <![CDATA[7]]>
+                <![CDATA[1992]]>
               </value>
             </param>
             <param index="7">
               <value>
-                <![CDATA[1992]]>
+                <![CDATA[Mr]]>
               </value>
             </param>
             <param index="8">
               <value>
-                <![CDATA[Mr]]>
+                <![CDATA[Aarav]]>
               </value>
             </param>
             <param index="9">
               <value>
-                <![CDATA[10th std Admit card with DOB]]>
+                <![CDATA[A]]>
               </value>
             </param>
             <param index="10">
               <value>
-                <![CDATA[Aarav]]>
+                <![CDATA[B]]>
               </value>
             </param>
             <param index="11">
               <value>
-                <![CDATA[A]]>
+                <![CDATA[10th std Admit card with DOB]]>
               </value>
             </param>
             <param index="12">
               <value>
-                <![CDATA[B]]>
+                <![CDATA[Voters ID]]>
               </value>
             </param>
             <param index="13">
               <value>
-                <![CDATA[Voters ID]]>
+                <![CDATA[1]]>
               </value>
             </param>
             <param index="14">
               <value>
-                <![CDATA[1]]>
+                <![CDATA[Graduate]]>
               </value>
             </param>
             <param index="15">
               <value>
-                <![CDATA[Graduate]]>
+                <![CDATA[Single]]>
               </value>
             </param>
             <param index="16">
               <value>
-                <![CDATA[Single]]>
+                <![CDATA[Anil]]>
               </value>
             </param>
             <param index="17">
               <value>
-                <![CDATA[Anil]]>
+                <![CDATA[A]]>
               </value>
             </param>
             <param index="18">
               <value>
-                <![CDATA[A]]>
+                <![CDATA[B]]>
               </value>
             </param>
             <param index="19">
               <value>
-                <![CDATA[B]]>
+                <![CDATA[Resident Indian National]]>
               </value>
             </param>
             <param index="20">
               <value>
-                <![CDATA[Resident Indian National]]>
+                <![CDATA[Bangalore]]>
               </value>
             </param>
             <param index="21">
               <value>
-                <![CDATA[Bangalore]]>
+                <![CDATA[kormangala]]>
               </value>
             </param>
             <param index="22">
               <value>
-                <![CDATA[kormangala]]>
+                <![CDATA[Adugodi]]>
               </value>
             </param>
             <param index="23">
               <value>
-                <![CDATA[Adugodi]]>
+                <![CDATA[560066]]>
               </value>
             </param>
             <param index="24">
               <value>
-                <![CDATA[Near Forum]]>
+                <![CDATA[Aadhaar Card]]>
               </value>
             </param>
             <param index="25">
               <value>
-                <![CDATA[560066]]>
+                <![CDATA[9740234356]]>
               </value>
             </param>
             <param index="26">
               <value>
-                <![CDATA[Aadhaar Card]]>
+                <![CDATA[vanitha.cv@prakat.in]]>
               </value>
             </param>
             <param index="27">
               <value>
-                <![CDATA[9740234356]]>
+                <![CDATA[English]]>
               </value>
             </param>
             <param index="28">
               <value>
-                <![CDATA[vanitha.cv@prakat.in]]>
+                <![CDATA[Salaried - MNC]]>
               </value>
             </param>
             <param index="29">
               <value>
-                <![CDATA[English]]>
+                <![CDATA[Accountant]]>
               </value>
             </param>
             <param index="30">
               <value>
-                <![CDATA[Salaried - MNC]]>
+                <![CDATA[Accountant]]>
               </value>
             </param>
             <param index="31">
               <value>
-                <![CDATA[Accountant]]>
+                <![CDATA[ABB Limited]]>
               </value>
             </param>
             <param index="32">
               <value>
-                <![CDATA[Accountant]]>
+                <![CDATA[100000]]>
               </value>
             </param>
             <param index="33">
               <value>
-                <![CDATA[ABB Limited]]>
+                <![CDATA[Salary Slip]]>
               </value>
             </param>
             <param index="34">
               <value>
-                <![CDATA[100000]]>
+                <![CDATA[2018 - 19]]>
               </value>
             </param>
             <param index="35">
               <value>
-                <![CDATA[50000]]>
+                <![CDATA[2000]]>
               </value>
             </param>
             <param index="36">
               <value>
-                <![CDATA[Accountant]]>
+                <![CDATA[50000]]>
               </value>
             </param>
             <param index="37">
               <value>
-                <![CDATA[23]]>
+                <![CDATA[Accountant]]>
               </value>
             </param>
             <param index="38">
               <value>
-                <![CDATA[5]]>
+                <![CDATA[23]]>
               </value>
             </param>
             <param index="39">
               <value>
-                <![CDATA[1974]]>
+                <![CDATA[5.0]]>
               </value>
             </param>
             <param index="40">
               <value>
-                <![CDATA[Father]]>
+                <![CDATA[1974.0]]>
               </value>
             </param>
             <param index="41">
               <value>
-                <![CDATA[Married]]>
+                <![CDATA[Father]]>
               </value>
             </param>
             <param index="42">
               <value>
-                <![CDATA[100]]>
+                <![CDATA[Married]]>
               </value>
             </param>
             <param index="43">
               <value>
-                <![CDATA[700000]]>
+                <![CDATA[100]]>
               </value>
             </param>
             <param index="44">
               <value>
-                <![CDATA[25]]>
+                <![CDATA[700000]]>
               </value>
             </param>
             <param index="45">
               <value>
-                <![CDATA[Monthly]]>
+                <![CDATA[25]]>
               </value>
             </param>
             <param index="46">
               <value>
-                <![CDATA[20]]>
+                <![CDATA[Half Yearly]]>
               </value>
             </param>
             <param index="47">
               <value>
-                <![CDATA[4]]>
+                <![CDATA[27]]>
               </value>
             </param>
             <param index="48">
               <value>
-                <![CDATA[2019]]>
+                <![CDATA[06]]>
               </value>
             </param>
             <param index="49">
               <value>
-                <![CDATA[Non-Medical]]>
+                <![CDATA[2019]]>
               </value>
             </param>
             <param index="50">
               <value>
-                <![CDATA[123456789]]>
+                <![CDATA[Non-Medical]]>
               </value>
             </param>
             <param index="51">
               <value>
-                <![CDATA[123456789]]>
+                <![CDATA[Testing]]>
               </value>
             </param>
             <param index="52">
               <value>
-                <![CDATA[Current]]>
+                <![CDATA[165]]>
               </value>
             </param>
             <param index="53">
               <value>
-                <![CDATA[D]]>
+                <![CDATA[60]]>
               </value>
             </param>
             <param index="54">
               <value>
-                <![CDATA[HDFC0002019]]>
+                <![CDATA[Non Smoke]]>
               </value>
             </param>
             <param index="55">
               <value>
-                <![CDATA[01]]>
+                <![CDATA[Cash]]>
               </value>
             </param>
             <param index="56">
               <value>
-                <![CDATA[60000]]>
+                <![CDATA[HDFC Bank]]>
               </value>
             </param>
             <param index="57">
               <value>
-                <![CDATA[Testing]]>
-              </value>
-            </param>
-            <param index="58">
-              <value>
-                <![CDATA[Half Yearly]]>
-              </value>
-            </param>
-            <param index="59">
-              <value>
-                <![CDATA[Srk]]>
-              </value>
-            </param>
-            <param index="60">
-              <value>
-                <![CDATA[Credit Card - Matercard]]>
-              </value>
-            </param>
-            <param index="61">
-              <value>
-                <![CDATA[1.23456789E8]]>
-              </value>
-            </param>
-            <param index="62">
-              <value>
-                <![CDATA[07]]>
-              </value>
-            </param>
-            <param index="63">
-              <value>
-                <![CDATA[2019.0]]>
-              </value>
-            </param>
-            <param index="64">
-              <value>
-                <![CDATA[HDFC BANK]]>
-              </value>
-            </param>
-            <param index="65">
-              <value>
-                <![CDATA[170]]>
-              </value>
-            </param>
-            <param index="66">
-              <value>
-                <![CDATA[50]]>
-              </value>
-            </param>
-            <param index="67">
-              <value>
-                <![CDATA[Cash]]>
-              </value>
-            </param>
-            <param index="68">
-              <value>
-                <![CDATA[HDFC Bank]]>
-              </value>
-            </param>
-            <param index="69">
-              <value>
                 <![CDATA[3392]]>
-              </value>
-            </param>
-            <param index="70">
-              <value>
-                <![CDATA[Salary Slip]]>
-              </value>
-            </param>
-            <param index="71">
-              <value>
-                <![CDATA[2018 - 19]]>
-              </value>
-            </param>
-            <param index="72">
-              <value>
-                <![CDATA[2000]]>
-              </value>
-            </param>
-            <param index="73">
-              <value>
-                <![CDATA[Non Smoker]]>
-              </value>
-            </param>
-            <param index="74">
-              <value>
-                <![CDATA[Cheque]]>
-              </value>
-            </param>
-            <param index="75">
-              <value>
-                <![CDATA[HDFC Bank]]>
-              </value>
-            </param>
-            <param index="76">
-              <value>
-                <![CDATA[123456.0]]>
-              </value>
-            </param>
-            <param index="77">
-              <value>
-                <![CDATA[2000.0]]>
-              </value>
-            </param>
-            <param index="78">
-              <value>
-                <![CDATA[19]]>
-              </value>
-            </param>
-            <param index="79">
-              <value>
-                <![CDATA[06]]>
-              </value>
-            </param>
-            <param index="80">
-              <value>
-                <![CDATA[2019.0]]>
-              </value>
-            </param>
-            <param index="81">
-              <value>
-                <![CDATA[HDFC BANK LTD]]>
-              </value>
-            </param>
-            <param index="82">
-              <value>
-                <![CDATA[Kondapur]]>
-              </value>
-            </param>
-            <param index="83">
-              <value>
-                <![CDATA[123456789]]>
-              </value>
-            </param>
-            <param index="84">
-              <value>
-                <![CDATA[123456789]]>
-              </value>
-            </param>
-            <param index="85">
-              <value>
-                <![CDATA[kunal]]>
-              </value>
-            </param>
-            <param index="86">
-              <value>
-                <![CDATA[Local]]>
               </value>
             </param>
           </params>
@@ -461,10 +316,10 @@
 Command duration or timeout: 0 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'PRAKAT-D-002', ip: '192.168.1.156', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_131'
+System info: host: 'PRAKAT-L-064', ip: '172.16.14.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 74.0.3729.6 (255758eccf3d24..., userDataDir: C:\Users\PRAKAT~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:57305}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 75.0.3770.100, webStorageEnabled: true}
-Session ID: 313f664ef53239c38f1ef05a5cbef806
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 74.0.3729.6 (255758eccf3d24..., userDataDir: C:\Users\PRAKAT~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:64848}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 75.0.3770.100, webStorageEnabled: true}
+Session ID: b1965718f0e899c8eeae8d6f06d5bf49
 *** Element info: {Using=xpath, value=//p[text()=' Valid Agent No ']}]]>
             </message>
             <full-stacktrace>
@@ -474,15 +329,15 @@ Session ID: 313f664ef53239c38f1ef05a5cbef806
 Command duration or timeout: 0 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
-System info: host: 'PRAKAT-D-002', ip: '192.168.1.156', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_131'
+System info: host: 'PRAKAT-L-064', ip: '172.16.14.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 74.0.3729.6 (255758eccf3d24..., userDataDir: C:\Users\PRAKAT~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:57305}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 75.0.3770.100, webStorageEnabled: true}
-Session ID: 313f664ef53239c38f1ef05a5cbef806
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 74.0.3729.6 (255758eccf3d24..., userDataDir: C:\Users\PRAKAT~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:64848}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 75.0.3770.100, webStorageEnabled: true}
+Session ID: b1965718f0e899c8eeae8d6f06d5bf49
 *** Element info: {Using=xpath, value=//p[text()=' Valid Agent No ']}
 at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
 at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
 at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
 at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
@@ -498,11 +353,11 @@ at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:3
 at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
 at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
 at com.sun.proxy.$Proxy12.isDisplayed(Unknown Source)
-at com.prakat.Exide.TestScripts.ProposalFormMonthly.ProductDetails(ProposalFormMonthly.java:152)
+at com.prakat.Exide.TestScripts.PFHalfYearly.ProductDetails(PFHalfYearly.java:145)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
 at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
 at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
 at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
@@ -530,11 +385,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ProductDetails -->
-        <test-method status="PASS" signature="endReport()[pri:0, instance:com.prakat.Exide.TestScripts.ProposalFormMonthly@3abbfa04]" name="endReport" is-config="true" duration-ms="313" started-at="2019-06-20T12:37:08Z" finished-at="2019-06-20T12:37:08Z">
+        <test-method status="PASS" signature="endReport()[pri:0, instance:com.prakat.Exide.TestScripts.PFHalfYearly@14bf9759]" name="endReport" is-config="true" duration-ms="394" started-at="2019-06-27T12:16:03Z" finished-at="2019-06-27T12:16:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
-      </class> <!-- com.prakat.Exide.TestScripts.ProposalFormMonthly -->
+      </class> <!-- com.prakat.Exide.TestScripts.PFHalfYearly -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
