@@ -3,14 +3,8 @@ package com.prakat.Exide.TestScripts;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -29,6 +23,7 @@ import com.prakat.Exide.Pages.PlanDetails;
 import com.prakat.Exide.Pages.ProductSelection;
 import com.prakat.Exide.Pages.Questionnarie;
 import com.prakat.Exide.Pages.ReceiptCash;
+import com.prakat.Exide.Pages.ReceiptCheque;
 import com.prakat.Exide.Pages.Summary;
 import com.prakat.Generic.Helper.BaseTest;
 import com.prakat.Generic.Helper.ConstantHelper;
@@ -41,9 +36,10 @@ import com.prakat.Generic.Helper.WaitHelper;
 @Listeners(ScreenshotHelper.class)
 public class ProposalForm extends BaseTest {
 
+	
 	@DataProvider
-	public Object[][] getProductData() {
-		Object data[][] = ExcelDataProvider.getTestData("ProposalForm");
+	public Object[][] getProductData(){
+		Object data[][] = ExcelDataProvider.getTestData("PropForm");
 		return data;
 	}
 
@@ -60,6 +56,61 @@ public class ProposalForm extends BaseTest {
 			String AccType, String AccHoldersName, String IndIfscCode, String DebitDate, String ManDateAmount,
 			String Comment, String FreqPayHalfYearly, String CredCardHolder, String CredCardBrand,
 			String CreditCardNo, String ExpiryMonth, String ExpiryYear, String CardIssuer, String Height, String Weight,
+			String PayType, String BankTieUp, String EnterAmount, String IncomeProofType, String FinYear, String Income,
+			String SmokeHab, String payType, String BankTie, String ChequeNo, String ChequeAmt,
+			String CheqDay, String CheqMon, String CheqYr, String PaymentCheckType, String CheqBankName, String BankBrancName,
+			String BnkAccNo, String BnkAccConf, String BnkHoldName)
+			throws IOException, Throwable {
+		BaseTest.logger = BaseTest.report.createTest("Click on add new");
+		WaitHelper wait = new WaitHelper();
+		homePage = new HomePage(driver);
+		loginPage = new LoginPage(driver);
+		wait.implicitWait(30);
+		
+		xlib = new ExcelHelper();
+		prodSel = new ProductSelection(driver);
+		cpdetail = new CustomerPersonalDetails(driver);
+		cadetail = new CustomerAddressDetails(driver);
+		codetails = new CustomerOccupationDetails(driver);
+		nomdetails = new NomineeDetails(driver);
+		plndetails = new PlanDetails(driver);
+		credcarddetails = new CreditcardDetails(driver);
+		drop = new DropdownHelper();
+		questionnarie = new Questionnarie(driver);
+		receiptcash = new ReceiptCash(driver);
+		summary = new Summary(driver);
+		receiptcheque = new ReceiptCheque(driver);
+		//nonebilling = new NonebillingDetails(driver);
+		
+		// JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		System.out.println("vanitha");
+		loginPage.login();
+		String actTitle = driver.getTitle();
+		Assert.assertEquals(actTitle, ConstantHelper.ExpPageTitle);
+		System.out.println("Login success");
+	
+	/*
+	
+	@DataProvider(name = "newFile")
+	public Object[][] getProductData() {
+		Object data[][] = ExcelDataProvider.getTestData("PropForm");
+		return data;
+	}
+
+	@Test(dataProvider = "newFile")
+	public void ProductDetails(String productName, String proposalNo, String advisorCode, String accountNum,
+			String custRelationship, String day, String month, String year, String customerTitle, String ageProof,
+			String insuredFN, String insuredMN, String insuredLN, String idProof, String idProofNum, String education,
+			String maritalStatus, String fatherFN, String fatherMN, String fatherLN, String nationality,
+			String cAddress1, String cAddress2, String cAddress3, String cLandmark, String cPincode,
+			String addressProof, String mobileNum, String email, String preferedLang, String insuredOccupation,
+			String insuredDesignation, String OccuDesc, String insuredEmployer, String insuredIncome,
+			String fatherIncome, String fatherWork, String nmDOBday, String nmDOBmonth, String nmDOByear, String nomRelation,
+			String nmMaritalStatus, String nomShare, String sumAssured, String policyTerm, String FreqPayment, String PSDay, String PSMonth, String PSYear, String MedClass, String IndAccountNo, String IndConfirmAccNo,
+			String AccType, String AccHoldersName, String IndIfscCode, String DebitDate, String ManDateAmount,
+			String Comment, String FreqPayHalfYearly, String CredCardHolder, String CredCardBrand,
+			String CreditCardNo, String ExpireMonth, String ExpiryYear, String CardIssuer, String Height, String Weight,
 			String PayType, String BankTieUp, String EnterAmount, String IncomeProofType, String FinYear, String Income,
 			String SmokeHab)
 			throws IOException, Throwable {
@@ -89,7 +140,7 @@ public class ProposalForm extends BaseTest {
 		String actTitle = driver.getTitle();
 		Assert.assertEquals(actTitle, ConstantHelper.ExpPageTitle);
 		System.out.println("Login success");
-
+*/
 		/*
 		 * WebElement AddNewBtn=homePage.getAddNewBtn();
 		 * wait.waitForElementPresent(AddNewBtn, 10);
@@ -447,6 +498,7 @@ public class ProposalForm extends BaseTest {
         Thread.sleep(1000);
         plndetails.getsaveandproceedbtn().click();
         plndetails.getnoneBillingRadiobtn().click();
+        logger.pass("successfully added product details");
         //plndetails.getindividualBillingRadiobtn().click();
         
         //Credit card details
@@ -473,6 +525,8 @@ public class ProposalForm extends BaseTest {
         //E comments
         plndetails.getCommentstextfield().sendKeys(Comment);
         nonebilling.getsaveandprocedforEcomments().click();
+        logger.pass("plan details added  product details");
+
         Thread.sleep(8000);
         
         //Questionaries
@@ -492,6 +546,7 @@ public class ProposalForm extends BaseTest {
         questionnarie.getdrink().click();
         Thread.sleep(2000);
         questionnarie.getsaveandproceedQuestionHealth().click();
+        logger.pass("Questionnaire details filled successfully");
         
         //Reciept cash
         drop.getSelectByVisibleText(receiptcash.getcash(), PayType);
@@ -499,17 +554,19 @@ public class ProposalForm extends BaseTest {
         drop.getSelectByVisibleText(receiptcash.getbanktieup(), BankTieUp);
         receiptcash.getcashamt().sendKeys(EnterAmount);
         receiptcash.getproceedReciept().click();
+        logger.pass("Cash details added successfully");
         Thread.sleep(2000);
         
         //summary
         summary.getprocedwithchkbox().click();
         summary.getsaveandvalidate().click();
+        logger.pass("validated t-20 product successfully");
         //completed
         
         
         
         
-        
+       
         
         
         

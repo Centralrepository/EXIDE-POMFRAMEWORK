@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -29,6 +30,7 @@ import com.prakat.Exide.Pages.PlanDetails;
 import com.prakat.Exide.Pages.ProductSelection;
 import com.prakat.Exide.Pages.Questionnarie;
 import com.prakat.Exide.Pages.ReceiptCash;
+import com.prakat.Exide.Pages.ReceiptCheque;
 import com.prakat.Exide.Pages.Summary;
 import com.prakat.Generic.Helper.BaseTest;
 import com.prakat.Generic.Helper.ConstantHelper;
@@ -42,12 +44,12 @@ import com.prakat.Generic.Helper.WaitHelper;
 public class ProposalFormYear extends BaseTest {
 
 	@DataProvider
-	public Object[][] getProductData() {
-		Object data[][] = ExcelDataProvider.getTestData("ProposalFormYear");
+	public Object[][] getProductData2() {
+		Object data[][] = ExcelDataProvider.getTestData("PropFormYr");
 		return data;
 	}
 
-	@Test(dataProvider = "getProductData")
+	@Test(dataProvider = "getProductData2")
 	public void ProductDetails(String productName, String proposalNo, String advisorCode, String accountNum,
 			String custRelationship, String day, String month, String year, String customerTitle, String ageProof,
 			String insuredFN, String insuredMN, String insuredLN, String idProof, String idProofNum, String education,
@@ -68,6 +70,7 @@ public class ProposalFormYear extends BaseTest {
 		homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);
 		wait.implicitWait(30);
+		
 		xlib = new ExcelHelper();
 		prodSel = new ProductSelection(driver);
 		cpdetail = new CustomerPersonalDetails(driver);
@@ -80,7 +83,8 @@ public class ProposalFormYear extends BaseTest {
 		questionnarie = new Questionnarie(driver);
 		receiptcash = new ReceiptCash(driver);
 		summary = new Summary(driver);
-		nonebilling = new NonebillingDetails(driver);
+		receiptcheque = new ReceiptCheque(driver);
+		//nonebilling = new NonebillingDetails(driver);
 		
 		// JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -370,6 +374,7 @@ public class ProposalFormYear extends BaseTest {
 		nomdetails.getNomineesharetxt().sendKeys(nomShare);
 		nomdetails.getblankSpace().click();
 		nomdetails.getsaveandpro().click();
+		logger.pass("Nominee permanent address added successfully");
 		Thread.sleep(10000);
 		
 //		logger.pass("Nominee address & conatct details added successfully");
@@ -446,6 +451,9 @@ public class ProposalFormYear extends BaseTest {
         drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
         Thread.sleep(1000);
         plndetails.getsaveandproceedbtn().click();
+        logger.pass("successfully added product details");
+        
+        //Non reneval
         plndetails.getnoneBillingRadiobtn().click();
         //plndetails.getindividualBillingRadiobtn().click();
         
@@ -473,6 +481,7 @@ public class ProposalFormYear extends BaseTest {
         //E comments
         plndetails.getCommentstextfield().sendKeys(Comment);
         nonebilling.getsaveandprocedforEcomments().click();
+        logger.pass("plan details added  product details");
         Thread.sleep(8000);
         
         //Questionaries
@@ -492,6 +501,8 @@ public class ProposalFormYear extends BaseTest {
         questionnarie.getdrink().click();
         Thread.sleep(2000);
         questionnarie.getsaveandproceedQuestionHealth().click();
+        logger.pass("Questionnaire details filled successfully");
+
         
         //Reciept cash
         drop.getSelectByVisibleText(receiptcash.getcash(), PayTypeCredit);
@@ -499,13 +510,21 @@ public class ProposalFormYear extends BaseTest {
         drop.getSelectByVisibleText(receiptcash.getbanktieup(), BankTieUp);
         receiptcash.getcashamt().sendKeys(EnterAmount);
         receiptcash.getproceedReciept().click();
+        logger.pass("Credit card details filled successfully");
+
         Thread.sleep(2000);
         
         //summary
         summary.getprocedwithchkbox().click();
         summary.getsaveandvalidate().click();
+        logger.pass("validated t-20 product successfully");
         //completed with years123
-        
+        List<WebElement> list1 = driver.findElements(By.xpath("//*[@class='list-group-item']/label"));
+        int listlenth= list1.size();
+        for(int i=0;i<=listlenth-1;i++)
+        {
+        	list1.get(i).click();
+        }
         
         
         
