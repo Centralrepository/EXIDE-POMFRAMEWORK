@@ -534,6 +534,8 @@ public class PFMonthly extends BaseTest {
         {
         	list1.get(i).click();
         }
+        summary.getsubmitButton().click();
+        
         
         
         
