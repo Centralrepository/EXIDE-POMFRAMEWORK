@@ -73,6 +73,13 @@ import org.openqa.selenium.support.PageFactory;
 					return checklists;
 				}
 				
+				@FindBy(xpath="//button[contains(text(),' Submit ')]")
+				private WebElement submitButton;
+				public WebElement getsubmitButton()
+				{
+					return submitButton;
+				}
+				
 				WebDriver driver;
 				
 				public Summary(WebDriver driver) {
