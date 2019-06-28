@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.prakat.Exide.TestScripts.ProposalFormMonthly">
+      <class name="com.prakat.Exide.TestScripts.PFHalfYearly">
         <methods>
           <include name="setUpSuite"/>
           <include name="beforeTest"/>
           <include name="endReport"/>
           <include name="ProductDetails" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.prakat.Exide.TestScripts.ProposalFormMonthly -->
+      </class> <!-- com.prakat.Exide.TestScripts.PFHalfYearly -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

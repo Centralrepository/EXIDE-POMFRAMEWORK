@@ -416,6 +416,7 @@ public class PFHalfYearly extends BaseTest {
         summary.getprocedwithchkbox().click();
         Thread.sleep(3000);
         summary.getsaveandvalidate().click();
+
         
         List<WebElement> list1 = driver.findElements(By.xpath("//*[@class='list-group-item']/label"));
         int listlenth= list1.size();
@@ -426,6 +427,9 @@ public class PFHalfYearly extends BaseTest {
         summary.getsubmitButton().click();
         
         //completed
+
+        
+
         
 		
 	}
