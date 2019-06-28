@@ -59,6 +59,13 @@ import org.openqa.selenium.support.PageFactory;
 				  return saveandvalidate;
 				}
 				
+				@FindBy(xpath="//button[contains(text(),' Save and Proceed ')]")
+				private WebElement saveandproceed;
+				public WebElement getsaveandproceed()
+				{
+				  return saveandproceed;
+				}
+				
 				@FindBy(xpath="//*[@class='list-group-item']/label")
 				private WebElement checklists;
 				public WebElement getchecklists()

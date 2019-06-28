@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -29,6 +30,7 @@ import com.prakat.Exide.Pages.PlanDetails;
 import com.prakat.Exide.Pages.ProductSelection;
 import com.prakat.Exide.Pages.Questionnarie;
 import com.prakat.Exide.Pages.ReceiptCash;
+import com.prakat.Exide.Pages.ReceiptCreditCard;
 import com.prakat.Exide.Pages.Summary;
 import com.prakat.Generic.Helper.BaseTest;
 import com.prakat.Generic.Helper.ConstantHelper;
@@ -37,6 +39,8 @@ import com.prakat.Generic.Helper.ExcelDataProvider;
 import com.prakat.Generic.Helper.ExcelHelper;
 import com.prakat.Generic.Helper.ScreenshotHelper;
 import com.prakat.Generic.Helper.WaitHelper;
+
+import net.bytebuddy.utility.privilege.GetSystemPropertyAction;
 
 @Listeners(ScreenshotHelper.class)
 public class PFYearly extends BaseTest {
@@ -59,7 +63,9 @@ public class PFYearly extends BaseTest {
 			String nmDOBday, String nmDOBmonth, String nmDOByear, String nomRelation,
 			String nmMaritalStatus, String nomShare, String sumAssured, String policyTerm, String FreqPayYearly,
 			String PSDay, String PSMonth, String PSYear, String MedClass, String Comment,
-			String Height, String Weight, String SmokeHab, String PayTypeCredit, String BankTieUp, String EnterAmount)
+			String Height, String Weight, String SmokeHab, String PayTypeCredit, String BankTieUp, String CreditCardType,
+			String creditCardNo, String CredCardMonth, String CredCardYear, String CreditCardAmount,
+			String CredApprovalCode, String CardIssueBank, String mid, String tid)
 			throws IOException, Throwable {
 		BaseTest.logger = BaseTest.report.createTest("Click on add new");
 		WaitHelper wait = new WaitHelper();
@@ -79,6 +85,7 @@ public class PFYearly extends BaseTest {
 		receiptcash = new ReceiptCash(driver);
 		summary = new Summary(driver);
 		nonebilling = new NonebillingDetails(driver);
+		receiptcreditcard = new ReceiptCreditCard(driver);
 		
 		// JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -478,29 +485,55 @@ public class PFYearly extends BaseTest {
         
         //questionnarie.getExitingInsuranceDetailsText().click();
         questionnarie.getsaveandproceedQuestionInsuCover().click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         
         questionnarie.gethealthHeight().sendKeys(Height);
         questionnarie.gethealthWeight().sendKeys(Weight);
+        
+        
+		/*EventFiringWebDriver eventFiring1 = new EventFiringWebDriver(driver);
+		eventFiring1.executeScript("document.querySelector('div[class=\"customContainer2\"]').scrollTop=500");
        //Thread.sleep(4000);
-        eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=1000");
-        //Thread.sleep(5000);
-        drop.getSelectByVisibleText(questionnarie.getnonsmoke(), SmokeHab);
+*/       // eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=1000");
+        Thread.sleep(5000);
+      //  drop.getSelectByVisibleText(questionnarie.getnonsmoke(), SmokeHab);
         
         questionnarie.getdrink().click();
         Thread.sleep(2000);
         questionnarie.getsaveandproceedQuestionHealth().click();
         
         //Reciept cash
-        drop.getSelectByVisibleText(receiptcash.getcash(), PayTypeCredit);
+        //drop.getSelectByVisibleText(receiptcash.getcash(), PayTypeCredit);
+        drop.getSelectByVisibleText(receiptcreditcard.getccard(), PayTypeCredit);
         Thread.sleep(2000);
-        drop.getSelectByVisibleText(receiptcash.getbanktieup(), BankTieUp);
-        receiptcash.getcashamt().sendKeys(EnterAmount);
-        receiptcash.getproceedReciept().click();
+        
+        drop.getSelectByVisibleText(receiptcreditcard.gettieup(), BankTieUp);
+        drop.getSelectByVisibleText(receiptcreditcard.getcctype(), CreditCardType);
+        receiptcreditcard.getccno().sendKeys(creditCardNo);
+        receiptcreditcard.getmonth().sendKeys(CredCardMonth);
+        receiptcreditcard.getyear().sendKeys(CredCardYear);
+        receiptcreditcard.getccamt().sendKeys(CreditCardAmount);
+        receiptcreditcard.getapproval().sendKeys(CredApprovalCode);
+        receiptcreditcard.getccbank().sendKeys(CardIssueBank);
+        Actions action = new Actions(driver);
+        action.sendKeys(Keys.ARROW_DOWN).perform();
+        action.sendKeys(Keys.ENTER).perform();
+        //driver.findElement(By.xpath("//input[@name='ccBank']")).sendKeys(Keys.ARROW_DOWN);
+       // driver.findElement(By.xpath("//input[@name='ccBank']")).sendKeys(Keys.ENTER);
+        //Thread.sleep(2000);
+        //receiptcreditcard.getccbank().click();
+        receiptcreditcard.getccbank().sendKeys(Keys.ARROW_DOWN);
+        receiptcreditcard.getccbank().sendKeys(Keys.ENTER);
+        receiptcreditcard.getmid().sendKeys(mid);
+        receiptcreditcard.gettid().sendKeys(tid);
+        
+        receiptcreditcard.getproceed().click();
         Thread.sleep(2000);
         
         //summary
+        eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
         summary.getprocedwithchkbox().click();
+        Thread.sleep(2000);
         summary.getsaveandvalidate().click();
         //completed with years123
         

@@ -30,6 +30,7 @@ import com.prakat.Exide.Pages.ProductSelection;
 import com.prakat.Exide.Pages.Questionnarie;
 import com.prakat.Exide.Pages.ReceiptCash;
 import com.prakat.Exide.Pages.ReceiptCheque;
+import com.prakat.Exide.Pages.ReceiptCreditCard;
 import com.prakat.Exide.Pages.Summary;
 
 public class BaseTest {
@@ -54,6 +55,7 @@ public class BaseTest {
 	public Summary summary;
 	public ReceiptCheque receiptcheque;
 	public NonebillingDetails nonebilling;
+	public ReceiptCreditCard receiptcreditcard;
 	
 	public static ExtentReports report;
 	public static ExtentTest logger;	
