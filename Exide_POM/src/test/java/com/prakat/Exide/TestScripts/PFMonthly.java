@@ -512,8 +512,8 @@ public class PFMonthly extends BaseTest {
         receiptcheque.getday().sendKeys(CheqDay);
         receiptcheque.getmonth().sendKeys(CheqMon);
         receiptcheque.getyear().sendKeys(CheqYr);
-        drop.getSelectByVisibleText(receiptcheque.getchequetype(), PaymentCheckType);
-        
+        drop.getSelectByVisibleText(receiptcheque.getchequetype1(), PaymentCheckType);
+        Thread.sleep(1000);
         receiptcheque.getbank().sendKeys(CheqBankName);
         
         receiptcheque.getbank().sendKeys(Keys.ARROW_DOWN);

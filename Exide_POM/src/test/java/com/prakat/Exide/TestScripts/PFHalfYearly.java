@@ -82,7 +82,7 @@ public class PFHalfYearly extends BaseTest {
 		receiptcash = new ReceiptCash(driver);
 		summary = new Summary(driver);
 		receiptcheque = new ReceiptCheque(driver);
-		//nonebilling = new NonebillingDetails(driver);
+		nonebilling = new NonebillingDetails(driver);
 		
 		// JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -262,7 +262,7 @@ public class PFHalfYearly extends BaseTest {
 
 		logger.pass("Proposal Form success");
 		
-		
+		Thread.sleep(3000);
 		
 		
 		
@@ -396,10 +396,8 @@ public class PFHalfYearly extends BaseTest {
         
         questionnarie.gethealthHeight().sendKeys(Height);
         questionnarie.gethealthWeight().sendKeys(Weight);
-       //Thread.sleep(4000);
-        eventFiring.executeScript("document.querySelector('section[id='section2']').scrollTop=1000");
-        //Thread.sleep(5000);
-        drop.getSelectByVisibleText(questionnarie.getnonsmoke(), SmokeHab);
+        Thread.sleep(2000);
+		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
         
         questionnarie.getdrink().click();
         Thread.sleep(2000);
@@ -413,9 +411,10 @@ public class PFHalfYearly extends BaseTest {
         receiptcash.getcashamt().sendKeys(EnterAmount);
         receiptcash.getproceedReciept().click();
         Thread.sleep(2000);
-        
+		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
         //summary
         summary.getprocedwithchkbox().click();
+        Thread.sleep(3000);
         summary.getsaveandvalidate().click();
         //completed
         

@@ -191,6 +191,16 @@ public class CreditcardDetails {
 	return issuingAuthoritytfield;
 	}
 	
+	
+	//credit card type
+		@FindBy(xpath="//select[@name='ccType']")
+		private WebElement creditcardtype;
+		public WebElement getcreditcardtype()
+		{
+		return creditcardtype;
+		}
+	
+	
 WebDriver driver;
 	
 	public CreditcardDetails(WebDriver driver)

@@ -71,6 +71,15 @@ public class ReceiptCheque {
 	return chequetype;
 	}
 	
+	
+	//Elements Locator For cheque type select field
+		@FindBy(xpath="(//div//select[1])[3]")
+		private WebElement chequetype1;
+		public WebElement getchequetype1()
+		{
+		return chequetype1;
+		}
+	
 	//Elements Locator For Bank Name text field
 	@FindBy(xpath="//input[@name='Bank']")
 	private WebElement bank;
