@@ -535,6 +535,15 @@ public class PFYearly extends BaseTest {
         summary.getprocedwithchkbox().click();
         Thread.sleep(2000);
         summary.getsaveandvalidate().click();
+        
+        List<WebElement> list1 = driver.findElements(By.xpath("//*[@class='list-group-item']/label"));
+        int listlenth= list1.size();
+        for(int i=0;i<=listlenth-1;i++)
+        {
+        	list1.get(i).click();
+        }
+        summary.getsubmitButton().click();
+        //completed
         //completed with years123
         
         
