@@ -18,6 +18,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.prakat.Exide.Pages.CreditcardDetails;
 import com.prakat.Exide.Pages.CustomerAddressDetails;
 import com.prakat.Exide.Pages.CustomerOccupationDetails;
@@ -52,8 +55,8 @@ public class PFYearly extends BaseTest {
 	}
 
 	@Test(dataProvider = "getProductData")
-	public void ProductDetails(String productName, String proposalNo, String advisorCode,
-			String custRelationship, String day, String month, String year, String customerTitle, String insuredFN,
+	public void ProductDetails(String caseNo,String targetGroupName,String productName, String proposalNo, String advisorCode,
+			String custRelationship, String day, String month, String year, String pan,String customerTitle, String insuredFN,
 			String insuredMN, String insuredLN, String ageProof, String idProof, String idProofNum, String education,
 			String maritalStatus, String fatherFN, String fatherMN, String fatherLN, String nationality,
 			String cAddress1, String cAddress2, String cAddress3, String cPincode, String addressProof,
@@ -67,7 +70,12 @@ public class PFYearly extends BaseTest {
 			String creditCardNo, String CredCardMonth, String CredCardYear, String CreditCardAmount,
 			String CredApprovalCode, String CardIssueBank, String mid, String tid)
 			throws IOException, Throwable {
-		BaseTest.logger = BaseTest.report.createTest("Click on add new");
+		
+        test = extent.createTest("PFYearly");
+        String testResult = "Case No: " + caseNo + " &nbsp; <br /> &nbsp; Group Name: " + targetGroupName;
+        test.info(MarkupHelper.createLabel(testResult, ExtentColor.BLUE));
+        System.out.println(testResult);
+		
 		WaitHelper wait = new WaitHelper();
 		homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);
@@ -87,9 +95,9 @@ public class PFYearly extends BaseTest {
 		nonebilling = new NonebillingDetails(driver);
 		receiptcreditcard = new ReceiptCreditCard(driver);
 		
-		// JavascriptExecutor js = (JavascriptExecutor) driver;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 
-		System.out.println("vanitha");
+		//System.out.println("vanitha");
 		loginPage.login();
 		String actTitle = driver.getTitle();
 		Assert.assertEquals(actTitle, ConstantHelper.ExpPageTitle);
@@ -99,7 +107,7 @@ public class PFYearly extends BaseTest {
 		 * WebElement AddNewBtn=homePage.getAddNewBtn();
 		 * wait.waitForElementPresent(AddNewBtn, 10);
 		 */
-		Thread.sleep(10000);
+		Thread.sleep(3000);
 		homePage.getAddNewBtn().click();
 		// loginPage.getSkipForMobileLink().click();
 		// String actTitle = driver.getTitle();
@@ -123,7 +131,7 @@ public class PFYearly extends BaseTest {
 
 		prodSel.getProposalFormNo().sendKeys(proposalNo);
 
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 
 /*		if (prodSel.getProposalErrorMsg().isDisplayed()) {
 			System.out.println("Invalid Proposal Number");
@@ -133,29 +141,31 @@ public class PFYearly extends BaseTest {
 			Assert.assertEquals(actualProposalMsg, " Valid Proposal No ");
 		}*/
 		
-		
-		if (prodSel.getValidProposalMsg().isDisplayed()) {
+		Assert.assertTrue(prodSel.getValidProposalMsg().isDisplayed());
+/*		if (prodSel.getValidProposalMsg().isDisplayed()) {
 			System.out.println("valid Proposal Number");
 		} else {
 			System.out.println("Invalid Proposal Number");
-		}		
+		}*/		
 		
 		prodSel.getPlanSaveProceedBtn().click();
 		Thread.sleep(2000);
 		// String advcode=xlib.getExcelData("ProductName", 2, 0);
 		System.out.println(advisorCode);
 		prodSel.getAdvisorCode().sendKeys(advisorCode);
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		prodSel.getStatusText().click();
 		Thread.sleep(2000);
 		
-		if (prodSel.getValidAdvisorMsg().isDisplayed()) {
+		Assert.assertTrue(prodSel.getValidAdvisorMsg().isDisplayed());
+		
+/*		if (prodSel.getValidAdvisorMsg().isDisplayed()) {
 			System.out.println(" Valid Agent No ");
 		} else {
 			System.out.println(" Invalid Agent No ");
-		}		
+		}*/		
 		
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		prodSel.getAgentSaveProceed().click();
 
 		
@@ -239,11 +249,11 @@ public class PFYearly extends BaseTest {
 		cpdetail.getDateOfBirthDay().sendKeys(day);
 		cpdetail.getDateOfBirthMonth().sendKeys(month);
 		cpdetail.getDateOfBirthYear().sendKeys(year);
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		cpdetail.getGenderMale().click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		cpdetail.getCustNoPANCheckbox().click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		cpdetail.getCustNoAadharCheckbox().click();
 
 		// WebElement scrollelement =pdetail.getCustomScrollContainer1();
@@ -262,17 +272,17 @@ public class PFYearly extends BaseTest {
 		
 		
 		
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		cpdetail.getCustHasNoPrevPolicyNum().click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		cpdetail.getPrevPolicySearch().click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		cpdetail.getAddNewCustomerRadio().click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
 
 		drop.getSelectByVisibleText(cpdetail.getcustomerTitle(), customerTitle);
@@ -282,7 +292,7 @@ public class PFYearly extends BaseTest {
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=1000");
 		// eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=200");
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		cpdetail.getInsuredNoCKYC().click();
 		drop.getSelectByVisibleText(cpdetail.getInsuredAgeProof(), ageProof);
 		drop.getSelectByVisibleText(cpdetail.getInsuredIDProof(), idProof);
@@ -314,8 +324,21 @@ public class PFYearly extends BaseTest {
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer2\"]').scrollTop=1000");
 		Thread.sleep(2000);
 		cadetail.getInsuredMobileNum().sendKeys(mobileNum);
+		if (cadetail.getInsuredMobileNum().isDisplayed()) {
+			System.out.println("Invalid Mobile Number");
+		} else {
+			System.out.println("Valid Mobile Number");
+		}
+				
+		
 		cadetail.getInsuredEmail().sendKeys(email);
 		Thread.sleep(1000);
+		if (cadetail.getInsuredEmailErr().isDisplayed()) {
+			System.out.println("Invalid Email");
+		} else {
+			System.out.println("Valid Email");
+		}
+		
 		cadetail.getCommModeEmail().click();
 		Thread.sleep(1000);
 		cadetail.getCommModeSms().click();
@@ -340,7 +363,6 @@ public class PFYearly extends BaseTest {
 		Thread.sleep(1000);
 		codetails.getCustOccuSaveProceed().click();
 
-		logger.pass("Proposal Form success");
 		
 		Thread.sleep(5000);
 	
@@ -351,7 +373,7 @@ public class PFYearly extends BaseTest {
 		nomdetails.getdaybox().sendKeys(nmDOBday);
 		nomdetails.getmonthtextbox().sendKeys(nmDOBmonth);
 		nomdetails.getyeartextbox().sendKeys(nmDOByear);
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		nomdetails.getMaleRadiobtn1().click();
 		Thread.sleep(2000);
 		nomdetails.getpanchkbox().click();
@@ -367,15 +389,21 @@ public class PFYearly extends BaseTest {
 		drop.getSelectByVisibleText(nomdetails.getmaritialstatdrop(), nmMaritalStatus);
 		drop.getSelectByVisibleText(nomdetails.getnationalitydropdown(), nationality);
 		nomdetails.savendproceedbtn().click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		
-		logger.pass("Nominee personal details added successfully");
+
 		
 		nomdetails.getYesrdobtn().click();
 		nomdetails.getNomineesharetxt().sendKeys(nomShare);
+		if (nomdetails.getNomshareErrTxt().isDisplayed()) {
+			System.out.println("Invalid Nomination Share");
+		} else {
+			System.out.println("Valid Nomination Share");
+		}				
+		
 		nomdetails.getblankSpace().click();
 		nomdetails.getsaveandpro().click();
-		Thread.sleep(10000);
+		Thread.sleep(3000);
 		
 //		logger.pass("Nominee address & conatct details added successfully");
 		
@@ -478,7 +506,7 @@ public class PFYearly extends BaseTest {
         //E comments
         plndetails.getCommentstextfield().sendKeys(Comment);
         nonebilling.getsaveandprocedforEcomments().click();
-        Thread.sleep(8000);
+        Thread.sleep(3000);
         
         //Questionaries
        
@@ -495,9 +523,11 @@ public class PFYearly extends BaseTest {
 		eventFiring1.executeScript("document.querySelector('div[class=\"customContainer2\"]').scrollTop=500");
        //Thread.sleep(4000);
 */       // eventFiring.executeScript("document.querySelector('div[class=\"customContainer\"]').scrollTop=1000");
-        Thread.sleep(5000);
+        Thread.sleep(2000);
       //  drop.getSelectByVisibleText(questionnarie.getnonsmoke(), SmokeHab);
-        
+        WebElement drinkChk = eventFiring.findElement(By.cssSelector("[for='noDrink']"));
+        js.executeScript("arguments[0].scrollIntoView(true);", drinkChk);
+        Thread.sleep(500);
         questionnarie.getdrink().click();
         Thread.sleep(2000);
         questionnarie.getsaveandproceedQuestionHealth().click();
@@ -515,37 +545,84 @@ public class PFYearly extends BaseTest {
         receiptcreditcard.getccamt().sendKeys(CreditCardAmount);
         receiptcreditcard.getapproval().sendKeys(CredApprovalCode);
         receiptcreditcard.getccbank().sendKeys(CardIssueBank);
-        Actions action = new Actions(driver);
+        Thread.sleep(3000);
+        
+        receiptcreditcard.getccbank().sendKeys(Keys.ARROW_DOWN);
+        receiptcreditcard.getccbank().sendKeys(Keys.ENTER);
+        
+        
+/*        Actions action = new Actions(driver);
         action.sendKeys(Keys.ARROW_DOWN).perform();
-        action.sendKeys(Keys.ENTER).perform();
+        action.sendKeys(Keys.ENTER).perform();*/
         //driver.findElement(By.xpath("//input[@name='ccBank']")).sendKeys(Keys.ARROW_DOWN);
        // driver.findElement(By.xpath("//input[@name='ccBank']")).sendKeys(Keys.ENTER);
         //Thread.sleep(2000);
         //receiptcreditcard.getccbank().click();
-        receiptcreditcard.getccbank().sendKeys(Keys.ARROW_DOWN);
-        receiptcreditcard.getccbank().sendKeys(Keys.ENTER);
+        //receiptcreditcard.getccbank().sendKeys(Keys.ARROW_DOWN);
+        //receiptcreditcard.getccbank().sendKeys(Keys.ENTER);
         receiptcreditcard.getmid().sendKeys(mid);
         receiptcreditcard.gettid().sendKeys(tid);
         
+/*        WebElement profileChk = eventFiring.findElement(By.xpath("//label[@for='proceedPercentage']"));
+        js.executeScript("arguments[0].scrollIntoView(true);", profileChk); 
+        Thread.sleep(500);        
+        */
         receiptcreditcard.getproceed().click();
         Thread.sleep(2000);
         
-        //summary
-        eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
+        
+        WebElement profileChk = eventFiring.findElement(By.xpath("//label[@for='proceedPercentage']"));
+        js.executeScript("arguments[0].scrollIntoView(true);", profileChk); 
+        Thread.sleep(500);  
         summary.getprocedwithchkbox().click();
         Thread.sleep(2000);
         summary.getsaveandvalidate().click();
         
+       // Thread.sleep(1000);
+        
+        WebElement requiredDocsChk = eventFiring.findElement(By.xpath("//span[text()=\" 8-Page Application Form \"]"));
+        js.executeScript("arguments[0].scrollIntoView(true);", requiredDocsChk); 
+        Thread.sleep(500);
+        
+        
+/*        eventFiring.executeScript("document.querySelector('div[class=\"customContainer scrollable\"][id=\"scrollContainer\"]').scrollTop=500");
+        Thread.sleep(1000);
+        summary.getprocedwithchkbox().click();
+        eventFiring.executeScript("document.querySelector('div[class=\"customContainer scrollable\"][id=\"scrollContainer\"]').scrollTop=500");       
+        Thread.sleep(1000);
+        summary.getsaveandvalidate().click();
+        Thread.sleep(2000);
+        eventFiring.executeScript("document.querySelector('div[class=\"customContainer scrollable\"][id=\"scrollContainer\"]').scrollTop=1000");
+        Thread.sleep(1000);
+        eventFiring.executeScript("document.querySelector('div[class=\"customContainer scrollable\"][id=\"scrollContainer\"]').scrollTop=1000");
+        //completed        
+*/        //summary
+/*        //eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
+        summary.getprocedwithchkbox().click();
+        Thread.sleep(2000);
+        summary.getsaveandvalidate().click();*/
+        Thread.sleep(2000);
         List<WebElement> list1 = driver.findElements(By.xpath("//*[@class='list-group-item']/label"));
         int listlenth= list1.size();
         for(int i=0;i<=listlenth-1;i++)
         {
+        	Thread.sleep(1000);
         	list1.get(i).click();
         }
+        Thread.sleep(1000);
         summary.getsubmitButton().click();
         //completed
         //completed with years123
-        
+        Thread.sleep(5000);
+        //completed
+        loginPage.getProfileDropdown().click();
+        Thread.sleep(1000);
+        loginPage.getLogoutButton().click();
+        test = extent.createTest("PFHalfYearly");
+        test.log(Status.INFO,"Pf HalfYearly");
+        test.log(Status.PASS, "CoverNote generated successfully");
+        test = extent.createTest("PFMonthly");
+        test.log(Status.FAIL,"CoverNote not generated successfully");         
         
         
         

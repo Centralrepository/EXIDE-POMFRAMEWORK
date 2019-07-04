@@ -102,6 +102,13 @@ public class CustomerAddressDetails {
 	}	
 	
 	
+	@FindBy(xpath="//p[text()='Invalid Mobile Number.']")
+	private WebElement MobileNoErr;
+	public WebElement getMobileNoErr(){
+		return MobileNoErr;
+	}		
+	
+	
 	@FindBy(id="altMobileNumber")
 	private WebElement InsuredAltMobileNum;
 	public WebElement getInsuredAltMobileNum(){
@@ -127,6 +134,12 @@ public class CustomerAddressDetails {
 		return InsuredEmail;
 	}		
 	
+	
+	@FindBy(xpath="//p[text()='Invalid email!']")
+	private WebElement InsuredEmailErr;
+	public WebElement getInsuredEmailErr(){
+		return InsuredEmailErr;
+	}	
 	
 	@FindBy(xpath="//label[@for='commModeEmail']")
 	private WebElement CommModeEmail;

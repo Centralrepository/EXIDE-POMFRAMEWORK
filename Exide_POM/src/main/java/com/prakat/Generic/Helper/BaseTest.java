@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -16,6 +17,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.prakat.Exide.Pages.CreditcardDetails;
 import com.prakat.Exide.Pages.CustomerAddressDetails;
 import com.prakat.Exide.Pages.CustomerOccupationDetails;
@@ -57,35 +59,54 @@ public class BaseTest {
 	public NonebillingDetails nonebilling;
 	public ReceiptCreditCard receiptcreditcard;
 	
-	public static ExtentReports report;
-	public static ExtentTest logger;	
+	public static ExtentReports extent;
+	public static ExtentHtmlReporter htmlReporter;
+	public static ExtentTest test;
+	//public static ExtentTest logger1;
+	//public static ExtentTest logger2;
 	static String browserName = ConstantHelper.BrowserType;
 	static String applicationURl = ConstantHelper.AppURL;
 	
 	@BeforeSuite
 	public void setUpSuite() {
-		ExtentHtmlReporter extent= new ExtentHtmlReporter("Resources\\Reports\\Report.html");
-		report = new ExtentReports();
-		report.attachReporter(extent);
+		htmlReporter= new ExtentHtmlReporter("Resources\\Reports\\Report.html");
+		htmlReporter.config().setDocumentTitle("EXIDE AUTOMATION REPORT");
+		htmlReporter.config().setReportName("EXIDE AUTOMATION TESTING SUMMARY REPORT");
+		htmlReporter.config().setTheme(Theme.DARK);
+		extent = new ExtentReports();
+		extent.attachReporter(htmlReporter);
+		extent.setSystemInfo("Browser", "Chrome");
 	}	
-	
+	@AfterMethod
 	public static ITestResult getResult(ITestResult result) {
+		if (result.getStatus() == ITestResult.FAILURE) {
+			test.log(Status.FAIL,"TEST CASE FAILED IS:"+result.getName());
+			test.log(Status.FAIL,"TEST CASE FAILED IS:"+result.getThrowable());
+		}else if (result.getStatus() == ITestResult.SUCCESS) {
+			test.log(Status.PASS,"TEST CASE PASSED IS:"+result.getName());
+		} else {
+			test.log(Status.SKIP,"TEST CASE SKIPPED IS:"+result.getName());
+					
+		}
+		
+	return result;
+	}
+/*	public static ITestResult getResult(ITestResult result) {
 
 		if (result.getStatus() == ITestResult.FAILURE) {
-			
-
-			logger.log(Status.FAIL, MarkupHelper.createLabel(result.getName() + " Test case FAILED due to below issues:",
+			logger1.log(Status.FAIL, MarkupHelper.createLabel(result.getName() ,
 					ExtentColor.RED));
 		} else if (result.getStatus() == ITestResult.SUCCESS) {
 			logger.log(Status.PASS, MarkupHelper.createLabel(result.getName() + " Test Case PASSED", ExtentColor.GREEN));
 		} else {
-			logger.log(Status.SKIP,
+			logger2.log(Status.SKIP,
 					MarkupHelper.createLabel(result.getName() + " Test Case SKIPPED", ExtentColor.ORANGE));
-			logger.skip(result.getThrowable());
+			logger2.skip(result.getThrowable());
 		}
 		return result;
+	
 
-	}		
+	}	*/	
 	
 	@BeforeTest
 	public void beforeTest() throws IOException, Throwable {
@@ -117,7 +138,7 @@ public class BaseTest {
 	
 	@AfterSuite
 	public void endReport(){
-		report.flush();
+		extent.flush();
 }		
 
 }

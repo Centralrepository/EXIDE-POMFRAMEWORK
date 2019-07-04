@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.prakat.Exide.Pages.LoginPage;
 import com.prakat.Generic.Helper.BaseTest;
 import com.prakat.Generic.Helper.ScreenshotHelper;
@@ -17,7 +18,7 @@ public class ExideLogin extends BaseTest {
 	
 	@Test
 	public void LoginToExide() throws IOException, Throwable {
-		BaseTest.logger=BaseTest.report.createTest("Login to Exide");
+		test = extent.createTest("Login To Exide");
 		//homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);
 		//homePage.getLoginLink().click();
@@ -28,7 +29,7 @@ public class ExideLogin extends BaseTest {
 		//String actTitle = driver.getTitle();
 		//Assert.assertEquals(actTitle, ConstantHelper.ExpPageTitle);
 		//System.out.println("Login success");
-		logger.pass("Login success");
+		test.log(Status.PASS, "Logged In successfully");
 
 	}
 

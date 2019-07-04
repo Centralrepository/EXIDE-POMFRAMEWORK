@@ -17,6 +17,20 @@ public class LoginPage {
 
 	@FindBy(xpath = "//button[text()='Login']")
 	private WebElement loginButton;
+	
+	
+	@FindBy(id="profileDropdown")
+	private WebElement ProfileDropdown;
+	public WebElement getProfileDropdown() {
+		return ProfileDropdown;
+	}
+	
+	
+	@FindBy(xpath = "//img[@alt='Logout']")
+	private WebElement logoutButton;	
+	public WebElement getLogoutButton() {
+		return logoutButton;
+	}	
 
 	/*
 	 * @FindBy(linkText="Skip for now")

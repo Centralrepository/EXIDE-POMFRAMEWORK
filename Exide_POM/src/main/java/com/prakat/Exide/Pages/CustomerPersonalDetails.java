@@ -50,6 +50,14 @@ public class CustomerPersonalDetails {
 		return GenderFemale;
 	}
 	
+	
+	@FindBy(id="custInitSearchPAN")
+	private WebElement PANNum;
+	public WebElement getPANNum(){
+		return PANNum;
+	}	
+	
+
 	@FindBy(xpath="//label[@for='custInitSearchHasPAN']")
 	private WebElement CustNoPANCheckbox;
 	public WebElement getCustNoPANCheckbox(){

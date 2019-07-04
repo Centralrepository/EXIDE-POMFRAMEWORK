@@ -403,6 +403,16 @@ public class NomineeDetails {
 		return Nomineesharetxt;
 	}
 	
+	// elements locators for nominee share error text
+	
+	@FindBy(xpath = "//p[text()=\"Total share should be 100%.\"]")
+	private WebElement NomshareErrTxt;
+
+	public WebElement getNomshareErrTxt() {
+		return NomshareErrTxt;
+	}	
+	
+	
 	//element to click on blank space
 	
 	@FindBy(xpath = "//body//div[9]")
