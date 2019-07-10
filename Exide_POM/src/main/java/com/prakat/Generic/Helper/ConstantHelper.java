@@ -6,6 +6,7 @@ public interface ConstantHelper {
 		String BrowserType ="chrome";
 		String AppURL="https://host19.exidelife.in/sprint2";
 		String ExpNomineeText = "Personal Details of Nominee 1";
+		String nomShareErr="Total share should be 100%.";
 
 	}
   

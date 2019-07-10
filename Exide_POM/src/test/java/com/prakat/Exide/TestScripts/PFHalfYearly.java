@@ -94,7 +94,6 @@ public class PFHalfYearly extends BaseTest {
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
-		//System.out.println("vanitha");
 		loginPage.login();
 		String actTitle = driver.getTitle();
 		Assert.assertEquals(actTitle, ConstantHelper.ExpPageTitle);
@@ -103,48 +102,29 @@ public class PFHalfYearly extends BaseTest {
 		
 		Thread.sleep(3000);
 		homePage.getAddNewBtn().click();
-		// loginPage.getSkipForMobileLink().click();
-		// String actTitle = driver.getTitle();
-		// Assert.assertEquals(actTitle, ConstantHelper.ExpPageTitle);
-		// System.out.println("Login success");
 
-		// sel.getSingleProduct().click();
-
-		// String productName=xlib.getExcelData("ProductName", 1, 0);
 		System.out.println(productName);
-		// WebElement SelectProductSearch=sel.getSelectProductSearch();
+
 
 		prodSel.getSelectProductSearch().sendKeys(productName);
-		// wait.waitForElementPresent(SelectProductSearch, 20);
+
 		Thread.sleep(2000);
 		prodSel.getSelectProductSearch().sendKeys(Keys.ARROW_DOWN);
 		prodSel.getSelectProductSearch().sendKeys(Keys.ENTER);
 
-		// String proposalNo=xlib.getExcelData("ProductName", 1, 1);
 		System.out.println(proposalNo);
 
 		prodSel.getProposalFormNo().sendKeys(proposalNo);
 
 		Thread.sleep(2000);
 
-/*		if (prodSel.getProposalErrorMsg().isDisplayed()) {
-			System.out.println("Invalid Proposal Number");
-		} else {
-			String actualProposalMsg = prodSel.getValidProposalMsg().getText();
-			System.out.println(actualProposalMsg);
-			Assert.assertEquals(actualProposalMsg, " Valid Proposal No ");
-		}*/
+
 		Assert.assertTrue(prodSel.getValidProposalMsg().isDisplayed());
 		
-/*		if (prodSel.getValidProposalMsg().isDisplayed()) {
-			System.out.println("valid Proposal Number");
-		} else {
-			System.out.println("Invalid Proposal Number");
-		}	*/	
+
 		
 		prodSel.getPlanSaveProceedBtn().click();
 		Thread.sleep(2000);
-		// String advcode=xlib.getExcelData("ProductName", 2, 0);
 		System.out.println(advisorCode);
 		prodSel.getAdvisorCode().sendKeys(advisorCode);
 		Thread.sleep(2000);
@@ -152,11 +132,6 @@ public class PFHalfYearly extends BaseTest {
 		
 		Assert.assertTrue(prodSel.getValidAdvisorMsg().isDisplayed());
 		
-/*		if (prodSel.getValidAdvisorMsg().isDisplayed()) {
-			System.out.println(" Valid Agent No ");
-		} else {
-			System.out.println(" Invalid Agent No ");
-		}	*/	
 		
 		Thread.sleep(2000);
 		prodSel.getAgentSaveProceed().click();
@@ -181,17 +156,12 @@ public class PFHalfYearly extends BaseTest {
 		Thread.sleep(1000);
 		cpdetail.getCustNoAadharCheckbox().click();
 
-		// WebElement scrollelement =pdetail.getCustomScrollContainer1();
-		// js.executeScript("arguments[0].scrollIntoView(true);",scrollelement);
 
 		Thread.sleep(2000);
 		EventFiringWebDriver eventFiring = new EventFiringWebDriver(driver);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
 
-		//String actualEiaNum = cpdetail.getCustInitSearchEiaNum().getText();
-		//System.out.println(actualEiaNum);
-		// System.out.println(accountNum);
-		// Assert.assertEquals(actualEiaNum, accountNum);
+
 		Thread.sleep(2000);
 		cpdetail.getCustSearch().click();
 		
@@ -216,7 +186,7 @@ public class PFHalfYearly extends BaseTest {
 		cpdetail.getInsuredLastName().sendKeys(insuredLN);
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=1000");
-		// eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=200");
+		
 		Thread.sleep(2000);
 		cpdetail.getInsuredNoCKYC().click();
 		drop.getSelectByVisibleText(cpdetail.getInsuredAgeProof(), ageProof);
@@ -248,22 +218,20 @@ public class PFHalfYearly extends BaseTest {
 		Thread.sleep(2000);
 		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer2\"]').scrollTop=1000");
 		Thread.sleep(2000);
-		cadetail.getInsuredMobileNum().sendKeys(mobileNum);
-/*		if (cadetail.getInsuredMobileNum().isDisplayed()) {
+		
+		if(mobileNum.length()<10){
 			System.out.println("Invalid Mobile Number");
-		} else {
-			System.out.println("Valid Mobile Number");
-		}*/
+		}else{
+		cadetail.getInsuredMobileNum().sendKeys(mobileNum);
+		Thread.sleep(1000);
+		}
+		
+
 		
 		
 		cadetail.getInsuredEmail().sendKeys(email);
 		Thread.sleep(1000);
-/*		if (cadetail.getInsuredEmailErr().isDisplayed()) {
-			System.out.println("Invalid Email");
-		} else {
-			System.out.println("Valid Email");
-		}		
-		*/
+
 		cadetail.getCommModeEmail().click();
 		Thread.sleep(1000);
 		cadetail.getCommModeSms().click();
@@ -321,11 +289,7 @@ public class PFHalfYearly extends BaseTest {
 		
 		nomdetails.getYesrdobtn().click();
 		nomdetails.getNomineesharetxt().sendKeys(nomShare);
-/*		if (nomdetails.getNomshareErrTxt().isDisplayed()) {
-			System.out.println("Invalid Nomination Share");
-		} else {
-			System.out.println("Valid Nomination Share");
-		}	*/			
+		
 		
 		nomdetails.getblankSpace().click();
 		nomdetails.getsaveandpro().click();
@@ -335,62 +299,9 @@ public class PFHalfYearly extends BaseTest {
 		
 		plndetails.getSumAssuredtbox().sendKeys(sumAssured);
 		Thread.sleep(5000);
-		//plndetails.getPolicyTermtbox().click();
 		Thread.sleep(2000);
 		plndetails.getPolicyTermtbox().sendKeys(policyTerm);
 		
-		/*
-		drop.getSelectByVisibleText(plndetails.getFrequencyPaymentDropdown(), FreqPayment);
-		//drop.getSelectByVisibleTex
-		Thread.sleep(2000);
-		//eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
-        //Thread.sleep(2000);
-		plndetails.getdaytfield().sendKeys(PSDay);
-        plndetails.getmonthtfield().sendKeys(PSMonth);
-        plndetails.getyeartfield().sendKeys(PSYear);
-        Thread.sleep(2000);
-        
-        drop.getSelectByVisibleText(plndetails.medicalclassDropdown(), MedClass);
-        plndetails.getsaveandproceedbtn().click();
-        plndetails.getindividualBillingRadiobtn().click();
-        plndetails.getDebitCardradiobtn().click();
-        plndetails.getDebitAccNo().sendKeys(IndAccountNo);
-        plndetails.getdebitconfirmAccNotfield().sendKeys(IndConfirmAccNo);
-        drop.getSelectByVisibleText(plndetails.getdebitAccTypeDropdown(), AccType);
-        plndetails.getdebitAccFnametfield().sendKeys(AccHoldersName);
-        Thread.sleep(2000);
-        plndetails.getifscCodeValuetfield().sendKeys(IndIfscCode);
-        Thread.sleep(5000);
-        //plndetails.getMICRcodetfield().click();
-        
-        //Thread.sleep(1000);
-        drop.getSelectByVisibleText(plndetails.getpreferreddebitdateDropdown(), DebitDate);
-        plndetails.getMandateAmounttextfield().sendKeys(ManDateAmount);
-        Thread.sleep(2000);
-        plndetails.getpremiumProposerNoradiobtn().click();
-        plndetails.getsaveAndProceedForRenewalPayment().click();
-        Thread.sleep(2000);
-      
-        
-        //Payout details
-        plndetails.getpayoutdetailsnotrequiredCbox().click();
-        plndetails.getsaveAndProceedForPayoutDetails().click();
-        Thread.sleep(2000);
-        
-        //premier details
-        plndetails.getNoRadiobutton().click();;
-        plndetails.getsaveAndProceedForPremierPayer().click();
-        Thread.sleep(2000);
-        
-        //E comments
-        plndetails.getCommentstextfield().sendKeys(Comment);
-        plndetails.getsaveAndProceedForEcomment().click();
-        Thread.sleep(2000);
-        
-        //Non reneval Half yearly
-        plndetails.getPlanDeatails().click();
-        Thread.sleep(3000);
-        */
         
         //Half yearly
         drop.getSelectByVisibleText(plndetails.getFrequencyPaymentDropdown(), FreqPayHalfYearly);
@@ -421,10 +332,8 @@ public class PFHalfYearly extends BaseTest {
 		
 		
         
-//Questionaries
-       
-        
-        //questionnarie.getExitingInsuranceDetailsText().click();
+        //Questionaries
+ 
         questionnarie.getsaveandproceedQuestionInsuCover().click();
         Thread.sleep(3000);
         
@@ -432,8 +341,7 @@ public class PFHalfYearly extends BaseTest {
         questionnarie.gethealthWeight().sendKeys(Weight);
         Thread.sleep(2000);
         
-        //need to check
-		//eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
+       
         WebElement drinkChk = eventFiring.findElement(By.cssSelector("[for='noDrink']"));
         js.executeScript("arguments[0].scrollIntoView(true);", drinkChk);
         Thread.sleep(500);
@@ -449,9 +357,7 @@ public class PFHalfYearly extends BaseTest {
         receiptcash.getcashamt().sendKeys(EnterAmount);
         receiptcash.getproceedReciept().click();
         Thread.sleep(2000);
-        
-        
-       // Thread.sleep(1000);
+
         eventFiring.executeScript("document.querySelector('div[class=\"customContainer scrollable\"][id=\"scrollContainer\"]').scrollTop=500");
         Thread.sleep(1000);
         summary.getprocedwithchkbox().click();
@@ -462,14 +368,7 @@ public class PFHalfYearly extends BaseTest {
         eventFiring.executeScript("document.querySelector('div[class=\"customContainer scrollable\"][id=\"scrollContainer\"]').scrollTop=1000");
         Thread.sleep(1000);
         eventFiring.executeScript("document.querySelector('div[class=\"customContainer scrollable\"][id=\"scrollContainer\"]').scrollTop=1000");
-        //completed
-        
-/*        //need to check
-		eventFiring.executeScript("document.querySelector('div[id=\"scrollContainer1\"]').scrollTop=500");
-        //summary
-        summary.getprocedwithchkbox().click();
-        Thread.sleep(3000);
-        summary.getsaveandvalidate().click();*/
+
         Thread.sleep(2000);
         List<WebElement> list1 = driver.findElements(By.xpath("//*[@class='list-group-item']/label"));
         int listlenth= list1.size();
@@ -485,12 +384,7 @@ public class PFHalfYearly extends BaseTest {
         loginPage.getProfileDropdown().click();
         Thread.sleep(1000);
         loginPage.getLogoutButton().click();
-/*        test = extent.createTest("PFHalfYearly");
-        test.log(Status.INFO,"Pf HalfYearly");
-        test.log(Status.PASS, "CoverNote generated successfully");
-        test = extent.createTest("PFMonthly");
-        test.log(Status.FAIL,"CoverNote not generated successfully");  
-        */
+
 		
 	}
 }
